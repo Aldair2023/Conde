@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JFrame {
 
         mnOpciones.setText("Opciones");
 
-        mnAgregar.setText("Agregar Personas");
+        mnAgregar.setText("Editar Personas");
         mnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnAgregarActionPerformed(evt);

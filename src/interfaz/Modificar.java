@@ -52,6 +52,7 @@ public class Modificar extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         cmbClientes = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -60,6 +61,7 @@ public class Modificar extends javax.swing.JDialog {
         txtApeliido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtDeuda = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         cmdModificar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtNuevoValor = new javax.swing.JTextField();
@@ -70,6 +72,9 @@ public class Modificar extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos:"));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmbClientes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -87,28 +92,33 @@ public class Modificar extends javax.swing.JDialog {
                 cmbClientesMouseReleased(evt);
             }
         });
-        jPanel1.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 210, 30));
+        jPanel2.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 210, 30));
 
         jLabel1.setText("Nombre:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         txtNombre.setEditable(false);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 150, 30));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 150, 30));
 
         jLabel2.setText("Cédula del cliente:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabel3.setText("Apellido:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         txtApeliido.setEditable(false);
-        jPanel1.add(txtApeliido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 150, 30));
+        jPanel2.add(txtApeliido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 150, 30));
 
         jLabel4.setText("Deuda actual:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         txtDeuda.setEditable(false);
-        jPanel1.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 130, 30));
+        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 120, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 250, 280));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Modificación:"));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdModificar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmdModificar.setText("Modificar");
@@ -117,41 +127,62 @@ public class Modificar extends javax.swing.JDialog {
                 cmdModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(cmdModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
+        jPanel3.add(cmdModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 90, 30));
 
-        jLabel5.setText("Nuevo valor");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
-        jPanel1.add(txtNuevoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 130, 30));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Nuevo valor:");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jPanel3.add(txtNuevoValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 140, 30));
 
         jLabel6.setText("NUEVA DEUDA:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         txtNuevaDeuda.setEditable(false);
-        jPanel1.add(txtNuevaDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 130, 30));
+        jPanel3.add(txtNuevaDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, 30));
 
         cmbOperacion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Agregar", "Restar" }));
-        jPanel1.add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 80, 30));
+        jPanel3.add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 90, 30));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 300, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(468, 539));
+        setSize(new java.awt.Dimension(648, 411));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdModificarActionPerformed
         // TODO add your handling code here:
-        //long deuda;
-        
+        try {
+            long deuda, new_value, new_debt = 0;
+            int op;
+            deuda = Long.parseLong(txtDeuda.getText());
+            new_value = Long.parseLong(txtNuevoValor.getText());
+            op = cmbOperacion.getSelectedIndex();
+            if (op == 0) {
+                new_debt = deuda + new_value;
+            }
+            else {
+                new_debt = deuda - new_value;
+            }
+            txtNuevaDeuda.setText(""+new_debt);
+            personas.get(cmbClientes.getSelectedIndex()).setDeuda(txtNuevaDeuda.getText());
+            txtNuevoValor.setEditable(false);
+        } catch (NumberFormatException e) {
+            Helper.mensaje(this, "Campo(s) Inválido(s).", 3);
+            txtNuevoValor.setText("");
+            txtNuevoValor.requestFocusInWindow();
+        }
     }//GEN-LAST:event_cmdModificarActionPerformed
 
     private void cmbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbClientesMouseClicked
@@ -175,6 +206,10 @@ public class Modificar extends javax.swing.JDialog {
             txtApeliido.setText(personas.get(i).getApellido());
             txtDeuda.setText(personas.get(i).getDeuda());
         }
+        txtNuevaDeuda.setText("");
+        txtNuevoValor.setEditable(true);
+        txtNuevoValor.requestFocusInWindow();
+        txtNuevoValor.selectAll();
     }//GEN-LAST:event_cmbClientesItemStateChanged
 
     /**
@@ -230,6 +265,8 @@ public class Modificar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtApeliido;
     private javax.swing.JTextField txtDeuda;
     private javax.swing.JTextField txtNombre;
