@@ -61,6 +61,7 @@ public class Modificar extends javax.swing.JDialog {
         txtApeliido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtDeuda = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         cmdModificar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -68,6 +69,8 @@ public class Modificar extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtNuevaDeuda = new javax.swing.JTextField();
         cmbOperacion = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,31 +95,40 @@ public class Modificar extends javax.swing.JDialog {
                 cmbClientesMouseReleased(evt);
             }
         });
-        jPanel2.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 210, 30));
+        jPanel2.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 210, 30));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Nombre:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         txtNombre.setEditable(false);
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 150, 30));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 150, 30));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Cédula del cliente:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Apellido:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         txtApeliido.setEditable(false);
-        jPanel2.add(txtApeliido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 150, 30));
+        jPanel2.add(txtApeliido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 150, 30));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Deuda actual:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         txtDeuda.setEditable(false);
-        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 120, 30));
+        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 120, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user-icon-44709.png"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 260));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 250, 280));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Modificación:"));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -144,7 +156,15 @@ public class Modificar extends javax.swing.JDialog {
         cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Agregar", "Restar" }));
         jPanel3.add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 90, 30));
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/intercambio.png"))); // NOI18N
+        jLabel9.setText("jLabel9");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 290, 280));
+
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 300, 280));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-de-pantalla-degradado-azul.jpg"))); // NOI18N
+        jLabel8.setText("fondo");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -264,6 +284,9 @@ public class Modificar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
