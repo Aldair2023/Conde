@@ -8,6 +8,7 @@ package interfaz;
 
 import clases.Helper;
 import clases.Persona;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -82,17 +83,6 @@ public class Modificar extends javax.swing.JDialog {
         cmbClientes.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbClientesItemStateChanged(evt);
-            }
-        });
-        cmbClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmbClientesMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cmbClientesMouseExited(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                cmbClientesMouseReleased(evt);
             }
         });
         jPanel2.add(cmbClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 210, 30));
@@ -197,27 +187,19 @@ public class Modificar extends javax.swing.JDialog {
             }
             txtNuevaDeuda.setText(""+new_debt);
             personas.get(cmbClientes.getSelectedIndex()).setDeuda(txtNuevaDeuda.getText());
-            txtNuevoValor.setEditable(false);
+            salida = new ObjectOutputStream(new FileOutputStream(ruta));
+            Helper.volcado(salida, personas);
+            txtNuevoValor.setText("");
         } catch (NumberFormatException e) {
             Helper.mensaje(this, "Campo(s) Inválido(s).", 3);
             txtNuevoValor.setText("");
             txtNuevoValor.requestFocusInWindow();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_cmdModificarActionPerformed
-
-    private void cmbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbClientesMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbClientesMouseClicked
-
-    private void cmbClientesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbClientesMouseReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_cmbClientesMouseReleased
-
-    private void cmbClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbClientesMouseExited
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_cmbClientesMouseExited
 
     private void cmbClientesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClientesItemStateChanged
         // TODO add your handling code here:
@@ -226,10 +208,8 @@ public class Modificar extends javax.swing.JDialog {
             txtApeliido.setText(personas.get(i).getApellido());
             txtDeuda.setText(personas.get(i).getDeuda());
         }
-        txtNuevaDeuda.setText("");
-        txtNuevoValor.setEditable(true);
         txtNuevoValor.requestFocusInWindow();
-        txtNuevoValor.selectAll();
+        txtNuevaDeuda.setText("");
     }//GEN-LAST:event_cmbClientesItemStateChanged
 
     /**
