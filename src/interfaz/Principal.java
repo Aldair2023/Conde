@@ -43,7 +43,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/conde.JPG"))); // NOI18N
+        lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/portada.jpg"))); // NOI18N
 
         mnOpciones.setText("Opciones");
 
@@ -90,7 +90,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 11, Short.MAX_VALUE))
