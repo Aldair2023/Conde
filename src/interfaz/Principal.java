@@ -40,7 +40,8 @@ public class Principal extends javax.swing.JFrame {
         mnOpciones = new javax.swing.JMenu();
         mnAgregar = new javax.swing.JMenuItem();
         mnModificar = new javax.swing.JMenuItem();
-        mnReportes = new javax.swing.JMenuItem();
+        mnReportes = new javax.swing.JMenu();
+        mnListadoCompleto = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnSalir = new javax.swing.JMenuItem();
 
@@ -70,6 +71,15 @@ public class Principal extends javax.swing.JFrame {
         mnOpciones.add(mnModificar);
 
         mnReportes.setText("Reportes");
+
+        mnListadoCompleto.setText("Listado Completo");
+        mnListadoCompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoCompletoActionPerformed(evt);
+            }
+        });
+        mnReportes.add(mnListadoCompleto);
+
         mnOpciones.add(mnReportes);
         mnOpciones.add(jSeparator1);
 
@@ -123,6 +133,12 @@ public class Principal extends javax.swing.JFrame {
         m.setVisible(true);
     }//GEN-LAST:event_mnModificarActionPerformed
 
+    private void mnListadoCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoCompletoActionPerformed
+        // TODO add your handling code here:
+        ListadoCompleto lc = new ListadoCompleto(this,true);
+        lc.setVisible(true);
+    }//GEN-LAST:event_mnListadoCompletoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -164,9 +180,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JMenuItem mnAgregar;
+    private javax.swing.JMenuItem mnListadoCompleto;
     private javax.swing.JMenuItem mnModificar;
     private javax.swing.JMenu mnOpciones;
-    private javax.swing.JMenuItem mnReportes;
+    private javax.swing.JMenu mnReportes;
     private javax.swing.JMenuItem mnSalir;
     // End of variables declaration//GEN-END:variables
 }
