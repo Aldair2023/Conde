@@ -63,6 +63,8 @@ public class Agregar extends javax.swing.JDialog {
         txtApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtDeuda = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        cmbSexo = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         cmdCancelar = new javax.swing.JButton();
         cmdEliminar = new javax.swing.JButton();
@@ -84,49 +86,56 @@ public class Agregar extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Cédula:");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 45, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 37, -1, -1));
 
         txtCc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCcKeyTyped(evt);
             }
         });
-        jPanel2.add(txtCc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 140, 25));
+        jPanel2.add(txtCc, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 140, 26));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Nombre:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 84, -1, -1));
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
             }
         });
-        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 140, 25));
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 140, 27));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Apellido:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 145, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 135, -1, -1));
 
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtApellidoKeyTyped(evt);
             }
         });
-        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 140, 25));
+        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 140, 27));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Deuda:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 195, -1, -1));
+        jLabel4.setText("Sexo:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         txtDeuda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDeudaKeyTyped(evt);
             }
         });
-        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 140, 25));
+        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 140, 27));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 260, 230));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("Deuda:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
+
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
+        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 235, 100, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 260, 290));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Opciones"));
         jPanel3.setOpaque(false);
@@ -139,7 +148,7 @@ public class Agregar extends javax.swing.JDialog {
                 cmdCancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 90, 30));
+        jPanel3.add(cmdCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 90, 30));
 
         cmdEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmdEliminar.setText("Eliminar");
@@ -148,7 +157,7 @@ public class Agregar extends javax.swing.JDialog {
                 cmdEliminarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 90, 30));
+        jPanel3.add(cmdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
 
         cmdGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmdGuardar.setText("Guardar");
@@ -157,7 +166,7 @@ public class Agregar extends javax.swing.JDialog {
                 cmdGuardarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 90, 30));
+        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 90, 30));
 
         cmdBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmdBuscar.setText("Buscar");
@@ -166,9 +175,9 @@ public class Agregar extends javax.swing.JDialog {
                 cmdBuscarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 33, 90, 30));
+        jPanel3.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 130, 230));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 130, 290));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Personas"));
         jPanel4.setOpaque(false);
@@ -179,11 +188,11 @@ public class Agregar extends javax.swing.JDialog {
 
             },
             new String [] {
-                "No.", "Cédula", "Nombre", "Apellido", "Deuda"
+                "No.", "Cédula", "Nombre", "Apellido", "Deuda", "Sexo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -197,13 +206,13 @@ public class Agregar extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblTablaPersonas);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 390, 210));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 410, 210));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 410, 240));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 430, 240));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/portadaEditar.png"))); // NOI18N
         jLabel5.setText("fondoA");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 540));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 590));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -213,10 +222,10 @@ public class Agregar extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(468, 581));
+        setSize(new java.awt.Dimension(468, 628));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -252,22 +261,23 @@ public class Agregar extends javax.swing.JDialog {
 
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
         // TODO add your handling code here:
-        String cc, nombre, apellido, deuda;
+        String cc, nombre, apellido, deuda, sexo;
         cc = txtCc.getText();
         nombre = txtNombre.getText();
         apellido = txtApellido.getText();
         deuda = txtDeuda.getText();
+        sexo = cmbSexo.getSelectedItem().toString();
         /*if (cc.equals(Helper.traerPersonaCedula(cc, ruta).getCc())) {
                 Helper.mensaje(this, "Ya existe con esta cédula.", 3);
         }*/
         ArrayList<Persona> personasModificado;
         try {
             if (aux == 0) {
-                Persona p = new Persona(cc, nombre, apellido, deuda);
+                Persona p = new Persona(cc, nombre, apellido, deuda, sexo);
                 p.guardar(salida);
             }
             else {
-                personasModificado = Helper.modificarPersona(ruta, cc, nombre, apellido, deuda);
+                personasModificado = Helper.modificarPersona(ruta, cc, nombre, apellido, deuda, sexo);
                 salida = new ObjectOutputStream(new FileOutputStream(ruta));
                 Helper.volcado(salida, personasModificado);
                 aux = 0;
@@ -423,6 +433,7 @@ public class Agregar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbSexo;
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JButton cmdCancelar;
     private javax.swing.JButton cmdEliminar;
@@ -432,6 +443,7 @@ public class Agregar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

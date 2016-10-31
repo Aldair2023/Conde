@@ -18,12 +18,14 @@ public class Persona implements java.io.Serializable{
     private String nombre;
     private String apellido;
     private String deuda;
+    private String sexo;
 
-    public Persona(String cc, String nombre, String apellido, String deuda) {
+    public Persona(String cc, String nombre, String apellido, String deuda, String sexo) {
         this.cc = cc;
         this.nombre = nombre;
         this.apellido = apellido;
         this.deuda = deuda;
+        this.sexo = sexo;
     }
 
     public String getCc() {
@@ -56,6 +58,14 @@ public class Persona implements java.io.Serializable{
 
     public void setDeuda(String deuda) {
         this.deuda = deuda;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     
     public void guardar(ObjectOutputStream salida) throws IOException {

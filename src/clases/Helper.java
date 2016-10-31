@@ -118,7 +118,36 @@ public class Helper {
             tabla.setValueAt(personas.get(i).getNombre(), i, 2);
             tabla.setValueAt(personas.get(i).getApellido(), i, 3);
             tabla.setValueAt(personas.get(i).getDeuda(), i, 4);
+            tabla.setValueAt(personas.get(i).getSexo(), i, 5);
         }
+    }
+    
+     public static void llenarTabla(JTable tabla, ArrayList<Persona> personas){
+        DefaultTableModel tm;
+        int nf;
+        tm = (DefaultTableModel)tabla.getModel();
+        limpiadoTabla(tabla);
+        nf = personas.size();
+        tm.setRowCount(nf);
+        for (int i = 0; i < nf; i++) {
+            tabla.setValueAt(i+1, i, 0);
+            tabla.setValueAt(personas.get(i).getCc(), i, 1);
+            tabla.setValueAt(personas.get(i).getNombre(), i, 2);
+            tabla.setValueAt(personas.get(i).getApellido(), i, 3);
+            tabla.setValueAt(personas.get(i).getDeuda(), i, 4);
+            tabla.setValueAt(personas.get(i).getSexo(), i, 5);
+        }
+    }
+    
+    public static void listadoPorSexo(JTable tabla, String ruta, String sexo){
+        ArrayList<Persona> personas = traerDatos(ruta);
+        ArrayList<Persona> personasFiltradas = new ArrayList();
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getSexo().equals(sexo)) {
+                personasFiltradas.add(personas.get(i));
+            }
+        }
+        llenarTabla(tabla, personasFiltradas);
     }
     
     public static void volcado(ObjectOutputStream salida, ArrayList personas){
@@ -151,13 +180,14 @@ public class Helper {
         return null;
     }
     
-    public static ArrayList<Persona> modificarPersona(String ruta, String cc, String nombre, String apellido, String deuda){
+    public static ArrayList<Persona> modificarPersona(String ruta, String cc, String nombre, String apellido, String deuda, String sexo){
         ArrayList<Persona> personas = traerDatos(ruta);
         for (int i = 0; i < personas.size(); i++) {
             if (personas.get(i).getCc().equals(cc)) {
                 personas.get(i).setNombre(nombre);
                 personas.get(i).setApellido(apellido);
                 personas.get(i).setDeuda(deuda);
+                personas.get(i).setSexo(sexo);
                 return personas;
            }
        }

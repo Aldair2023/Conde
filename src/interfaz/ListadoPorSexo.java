@@ -11,7 +11,7 @@ import clases.Helper;
  *
  * @author rmorales1
  */
-public class ListadoCompleto extends javax.swing.JDialog {
+public class ListadoPorSexo extends javax.swing.JDialog {
 
     /**
      * Creates new form Agregar
@@ -19,11 +19,10 @@ public class ListadoCompleto extends javax.swing.JDialog {
     String ruta;
    
     
-    public ListadoCompleto(java.awt.Frame parent, boolean modal) {
+    public ListadoPorSexo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         ruta = "src/datos/people.txt";
-        Helper.llenarTabla(tblTablaPersonas, ruta);
     }
 
     /**
@@ -37,12 +36,15 @@ public class ListadoCompleto extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTablaPersonas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        cmdListar = new javax.swing.JButton();
+        cmbSexo = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,6 +58,9 @@ public class ListadoCompleto extends javax.swing.JDialog {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fn.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AGREGAR PERSONAS");
@@ -87,15 +92,28 @@ public class ListadoCompleto extends javax.swing.JDialog {
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 460, 260));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 480, 290));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 480, 290));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("LISTADO DE PERSONAS INGRESADAS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
+        jLabel1.setText("LISTADO POR SEXO");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fn.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 380));
+        cmdListar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmdListar.setText("Listar");
+        cmdListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdListarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cmdListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 100, 30));
+
+        cmbSexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
+        jPanel1.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 110, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fn.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 500, 390));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,12 +123,18 @@ public class ListadoCompleto extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(512, 417));
+        setSize(new java.awt.Dimension(512, 409));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdListarActionPerformed
+        // TODO add your handling code here:
+        String sexo = cmbSexo.getSelectedItem().toString();
+        Helper.listadoPorSexo(tblTablaPersonas, ruta, sexo);
+    }//GEN-LAST:event_cmdListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,21 +153,23 @@ public class ListadoCompleto extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListadoCompleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListadoCompleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListadoCompleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListadoCompleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ListadoCompleto dialog = new ListadoCompleto(new javax.swing.JFrame(), true);
+                ListadoPorSexo dialog = new ListadoPorSexo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -156,8 +182,11 @@ public class ListadoCompleto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbSexo;
+    private javax.swing.JButton cmdListar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;

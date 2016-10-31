@@ -42,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
         mnModificar = new javax.swing.JMenuItem();
         mnReportes = new javax.swing.JMenu();
         mnListadoCompleto = new javax.swing.JMenuItem();
+        mnListadoPorSexo = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnSalir = new javax.swing.JMenuItem();
 
@@ -79,6 +80,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnReportes.add(mnListadoCompleto);
+
+        mnListadoPorSexo.setText("Listado Por Sexo");
+        mnListadoPorSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoPorSexoActionPerformed(evt);
+            }
+        });
+        mnReportes.add(mnListadoPorSexo);
 
         mnOpciones.add(mnReportes);
         mnOpciones.add(jSeparator1);
@@ -139,6 +148,12 @@ public class Principal extends javax.swing.JFrame {
         lc.setVisible(true);
     }//GEN-LAST:event_mnListadoCompletoActionPerformed
 
+    private void mnListadoPorSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPorSexoActionPerformed
+        // TODO add your handling code here:
+        ListadoPorSexo lps = new ListadoPorSexo(this,true);
+        lps.setVisible(true);
+    }//GEN-LAST:event_mnListadoPorSexoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,6 +196,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel lblImagen;
     private javax.swing.JMenuItem mnAgregar;
     private javax.swing.JMenuItem mnListadoCompleto;
+    private javax.swing.JMenuItem mnListadoPorSexo;
     private javax.swing.JMenuItem mnModificar;
     private javax.swing.JMenu mnOpciones;
     private javax.swing.JMenu mnReportes;
