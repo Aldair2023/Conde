@@ -12,8 +12,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.util.LinkedList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -83,10 +85,10 @@ public class Helper {
     }
   
     
-    public static ArrayList traerDatos(String ruta){
+    public static LinkedList traerDatos(String ruta){
         FileInputStream archivo;
         ObjectInputStream entrada;
-        ArrayList personas = new ArrayList();
+        LinkedList personas = new LinkedList();
         Object p;
         try {
             archivo = new FileInputStream(ruta);
@@ -104,53 +106,98 @@ public class Helper {
         return personas;
     }
     
-    public static void llenarTabla(JTable tabla, String ruta){
+    public static void llenarTablaTrabajadores(JTable tabla, String ruta){
         DefaultTableModel tm;
         int nf;
-        ArrayList<Persona> personas = traerDatos(ruta);
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
         tm = (DefaultTableModel)tabla.getModel();
         limpiadoTabla(tabla);
-        nf = personas.size();
+        nf = trabajadores.size();
         tm.setRowCount(nf);
         for (int i = 0; i < nf; i++) {
             tabla.setValueAt(i+1, i, 0);
-            tabla.setValueAt(personas.get(i).getCc(), i, 1);
-            tabla.setValueAt(personas.get(i).getNombre(), i, 2);
-            tabla.setValueAt(personas.get(i).getApellido(), i, 3);
-            tabla.setValueAt(personas.get(i).getDeuda(), i, 4);
-            tabla.setValueAt(personas.get(i).getSexo(), i, 5);
+            tabla.setValueAt(trabajadores.get(i).getCc(), i, 1);
+            tabla.setValueAt(trabajadores.get(i).getNombre(), i, 2);
+            tabla.setValueAt(trabajadores.get(i).getApellido(), i, 3);
+            tabla.setValueAt(trabajadores.get(i).getAddress(), i, 4);
+            tabla.setValueAt(trabajadores.get(i).getNum_tel(), i, 5);
+            tabla.setValueAt(trabajadores.get(i).getSexo(), i, 6);
         }
     }
     
-     public static void llenarTabla(JTable tabla, ArrayList<Persona> personas){
+     public static void llenarTablaClientes(JTable tabla, String ruta){
+        DefaultTableModel tm;
+        int nf;
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        tm = (DefaultTableModel)tabla.getModel();
+        limpiadoTabla(tabla);
+        nf = clientes.size();
+        tm.setRowCount(nf);
+        for (int i = 0; i < nf; i++) {
+            tabla.setValueAt(i+1, i, 0);
+            tabla.setValueAt(clientes.get(i).getDeuda(), i, 1);
+            tabla.setValueAt(clientes.get(i).getNum_tel_fiador(), i, 2);
+            tabla.setValueAt(clientes.get(i).getEncargado().getNombre(), i, 3);
+            tabla.setValueAt(clientes.get(i).getCc(), i, 4);
+            tabla.setValueAt(clientes.get(i).getNombre(), i, 5);
+            tabla.setValueAt(clientes.get(i).getApellido(), i, 6);
+            tabla.setValueAt(clientes.get(i).getAddress(), i, 7);
+            tabla.setValueAt(clientes.get(i).getNum_tel(), i, 8);
+            tabla.setValueAt(clientes.get(i).getSexo(), i, 9);
+        }
+    }
+    
+     public static void llenarTablaTrabajadores(JTable tabla, LinkedList<Trabajador> trabajadores){
         DefaultTableModel tm;
         int nf;
         tm = (DefaultTableModel)tabla.getModel();
         limpiadoTabla(tabla);
-        nf = personas.size();
+        nf = trabajadores.size();
         tm.setRowCount(nf);
         for (int i = 0; i < nf; i++) {
             tabla.setValueAt(i+1, i, 0);
-            tabla.setValueAt(personas.get(i).getCc(), i, 1);
-            tabla.setValueAt(personas.get(i).getNombre(), i, 2);
-            tabla.setValueAt(personas.get(i).getApellido(), i, 3);
-            tabla.setValueAt(personas.get(i).getDeuda(), i, 4);
-            tabla.setValueAt(personas.get(i).getSexo(), i, 5);
+            tabla.setValueAt(trabajadores.get(i).getCc(), i, 1);
+            tabla.setValueAt(trabajadores.get(i).getNombre(), i, 2);
+            tabla.setValueAt(trabajadores.get(i).getApellido(), i, 3);
+            tabla.setValueAt(trabajadores.get(i).getAddress(), i, 4);
+            tabla.setValueAt(trabajadores.get(i).getNum_tel(), i, 5);
+            tabla.setValueAt(trabajadores.get(i).getSexo(), i, 6);
+        }
+    }
+     
+     public static void llenarTablaClientes(JTable tabla, LinkedList<Cliente> clientes){
+        DefaultTableModel tm;
+        int nf;
+        tm = (DefaultTableModel)tabla.getModel();
+        limpiadoTabla(tabla);
+        nf = clientes.size();
+        tm.setRowCount(nf);
+        for (int i = 0; i < nf; i++) {
+            tabla.setValueAt(i+1, i, 0);
+            tabla.setValueAt(clientes.get(i).getDeuda(), i, 1);
+            tabla.setValueAt(clientes.get(i).getNum_tel_fiador(), i, 2);
+            tabla.setValueAt(clientes.get(i).getEncargado().getNombre(), i, 3);
+            tabla.setValueAt(clientes.get(i).getCc(), i, 4);
+            tabla.setValueAt(clientes.get(i).getNombre(), i, 5);
+            tabla.setValueAt(clientes.get(i).getApellido(), i, 6);
+            tabla.setValueAt(clientes.get(i).getAddress(), i, 7);
+            tabla.setValueAt(clientes.get(i).getNum_tel(), i, 8);
+            tabla.setValueAt(clientes.get(i).getSexo(), i, 9);
         }
     }
     
     public static void listadoPorSexo(JTable tabla, String ruta, String sexo){
-        ArrayList<Persona> personas = traerDatos(ruta);
-        ArrayList<Persona> personasFiltradas = new ArrayList();
-        for (int i = 0; i < personas.size(); i++) {
-            if (personas.get(i).getSexo().equals(sexo)) {
-                personasFiltradas.add(personas.get(i));
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        LinkedList<Trabajador> trabajadoresFiltradas = new LinkedList();
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getSexo().equals(sexo)) {
+                trabajadoresFiltradas.add(trabajadores.get(i));
             }
         }
-        llenarTabla(tabla, personasFiltradas);
+        llenarTablaTrabajadores(tabla, trabajadoresFiltradas);
     }
     
-    public static void volcado(ObjectOutputStream salida, ArrayList personas){
+    public static void volcado(ObjectOutputStream salida, LinkedList personas){
         for (int i = 0; i < personas.size(); i++) {
             try {
                 salida.writeObject(personas.get(i));
@@ -160,39 +207,88 @@ public class Helper {
         }
     }
     
-    public static boolean buscarPersonaCedula(String cc, String ruta){
-        ArrayList<Persona> personas = traerDatos(ruta);
-        for (int i = 0; i < personas.size(); i++) {
-            if (personas.get(i).getCc().equals(cc)) {
+    public static boolean buscarTrabajadorCedula(String cc, String ruta){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getCc().equals(cc)) {
                 return true;
             }
         }
         return false;
     }
     
-    public static Persona traerPersonaCedula(String cc, String ruta){
-        ArrayList<Persona> personas = traerDatos(ruta);
-        for (int i = 0; i < personas.size(); i++) {
-            if (personas.get(i).getCc().equals(cc)) {
-                return personas.get(i);
+    public static boolean buscarClienteCedula(String cc, String ruta){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCc().equals(cc)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static Trabajador traerTrabajadorCedula(String cc, String ruta){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getCc().equals(cc)) {
+                return trabajadores.get(i);
             }
         }
         return null;
     }
     
-    public static ArrayList<Persona> modificarPersona(String ruta, String cc, String nombre, String apellido, String deuda, String sexo){
-        ArrayList<Persona> personas = traerDatos(ruta);
-        for (int i = 0; i < personas.size(); i++) {
-            if (personas.get(i).getCc().equals(cc)) {
-                personas.get(i).setNombre(nombre);
-                personas.get(i).setApellido(apellido);
-                personas.get(i).setDeuda(deuda);
-                personas.get(i).setSexo(sexo);
-                return personas;
+    public static Cliente traerClienteCedula(String cc, String ruta){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCc().equals(cc)) {
+                return clientes.get(i);
+            }
+        }
+        return null;
+    }
+    
+    public static LinkedList<Trabajador> modificarTrabajador(String ruta, String cc, String nombre, String apellido, String address, String num_tel, String sexo){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getCc().equals(cc)) {
+                trabajadores.get(i).setNombre(nombre);
+                trabajadores.get(i).setApellido(apellido);
+                trabajadores.get(i).setAddress(address);
+                trabajadores.get(i).setNum_tel(num_tel);
+                trabajadores.get(i).setSexo(sexo);
+                return trabajadores;
            }
        }
        return null;
     }
     
+    public static LinkedList<Cliente> modificarCliente(String ruta, String deuda, String num_tel_fiador, Trabajador encargado, String cc, String nombre, String apellido, String address, String num_tel, String sexo){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getCc().equals(cc)) {
+                clientes.get(i).setNombre(nombre);
+                clientes.get(i).setApellido(apellido);
+                clientes.get(i).setAddress(address);
+                clientes.get(i).setNum_tel(num_tel);
+                clientes.get(i).setNum_tel_fiador(num_tel_fiador);
+                clientes.get(i).setEncargado(encargado);
+                clientes.get(i).setSexo(sexo);
+                clientes.get(i).setDeuda(deuda);
+                return clientes;
+           }
+       }
+       return null;
+    }
+    
+    public static void llenarComboTrabajadores(JComboBox combo, String ruta){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        DefaultComboBoxModel dcbm =(DefaultComboBoxModel) combo.getModel();
+        dcbm.removeAllElements();
+        Trabajador t;
+        for (int i = 0; i < trabajadores.size(); i++) {
+            t = trabajadores.get(i);
+           dcbm.addElement(t.getCc()+" - "+t.getNombre()+" "+t.getApellido());
+        }
+    } 
     
 }

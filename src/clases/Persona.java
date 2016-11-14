@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package clases;
 
 import java.io.IOException;
@@ -11,20 +10,22 @@ import java.io.ObjectOutputStream;
 
 /**
  *
- * @author gcoronad2
+ * @author GABRIEL
  */
-public class Persona implements java.io.Serializable{
+public class Persona implements java.io.Serializable {
     private String cc;
     private String nombre;
     private String apellido;
-    private String deuda;
+    private String address;
+    private String num_tel;
     private String sexo;
 
-    public Persona(String cc, String nombre, String apellido, String deuda, String sexo) {
+    public Persona(String cc, String nombre, String apellido, String address, String num_tel, String sexo) {
         this.cc = cc;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.deuda = deuda;
+        this.address = address;
+        this.num_tel = num_tel;
         this.sexo = sexo;
     }
 
@@ -52,15 +53,23 @@ public class Persona implements java.io.Serializable{
         this.apellido = apellido;
     }
 
-    public String getDeuda() {
-        return deuda;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDeuda(String deuda) {
-        this.deuda = deuda;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getSexo() {
+    public String getNum_tel() {
+        return num_tel;
+    }
+
+    public void setNum_tel(String num_tel) {
+        this.num_tel = num_tel;
+    }
+    
+     public String getSexo() {
         return sexo;
     }
 
@@ -68,7 +77,7 @@ public class Persona implements java.io.Serializable{
         this.sexo = sexo;
     }
     
-    public void guardar(ObjectOutputStream salida) throws IOException {
+    public final void guardar(ObjectOutputStream salida) throws IOException {
         salida.writeObject(this);
     }
     

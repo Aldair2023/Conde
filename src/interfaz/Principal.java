@@ -21,6 +21,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
+    @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagen/logo.png"));
         return retValue;
@@ -38,13 +39,15 @@ public class Principal extends javax.swing.JFrame {
         lblImagen = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnOpciones = new javax.swing.JMenu();
-        mnAgregar = new javax.swing.JMenuItem();
-        mnModificar = new javax.swing.JMenuItem();
-        mnReportes = new javax.swing.JMenu();
-        mnListadoCompleto = new javax.swing.JMenuItem();
-        mnListadoPorSexo = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnSalir = new javax.swing.JMenuItem();
+        mnTrabajador = new javax.swing.JMenu();
+        mnAgregarTrabajador = new javax.swing.JMenuItem();
+        mnListadoCompletoTrabajador = new javax.swing.JMenuItem();
+        mnCliente = new javax.swing.JMenu();
+        mnAgregarCliente = new javax.swing.JMenuItem();
+        mnReportes = new javax.swing.JMenu();
+        mnListadoPorSexo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CONTROL DE DEUDAS");
@@ -54,42 +57,6 @@ public class Principal extends javax.swing.JFrame {
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/portada.jpg"))); // NOI18N
 
         mnOpciones.setText("Opciones");
-
-        mnAgregar.setText("Editar Personas");
-        mnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnAgregarActionPerformed(evt);
-            }
-        });
-        mnOpciones.add(mnAgregar);
-
-        mnModificar.setText("Modificar Valor");
-        mnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnModificarActionPerformed(evt);
-            }
-        });
-        mnOpciones.add(mnModificar);
-
-        mnReportes.setText("Reportes");
-
-        mnListadoCompleto.setText("Listado Completo");
-        mnListadoCompleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnListadoCompletoActionPerformed(evt);
-            }
-        });
-        mnReportes.add(mnListadoCompleto);
-
-        mnListadoPorSexo.setText("Listado Por Sexo");
-        mnListadoPorSexo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnListadoPorSexoActionPerformed(evt);
-            }
-        });
-        mnReportes.add(mnListadoPorSexo);
-
-        mnOpciones.add(mnReportes);
         mnOpciones.add(jSeparator1);
 
         mnSalir.setText("Salir");
@@ -101,6 +68,50 @@ public class Principal extends javax.swing.JFrame {
         mnOpciones.add(mnSalir);
 
         jMenuBar1.add(mnOpciones);
+
+        mnTrabajador.setText("Trabajadores");
+
+        mnAgregarTrabajador.setText("Agregar");
+        mnAgregarTrabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAgregarTrabajadorActionPerformed(evt);
+            }
+        });
+        mnTrabajador.add(mnAgregarTrabajador);
+
+        mnListadoCompletoTrabajador.setText("Listado Completo");
+        mnListadoCompletoTrabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoCompletoTrabajadorActionPerformed(evt);
+            }
+        });
+        mnTrabajador.add(mnListadoCompletoTrabajador);
+
+        jMenuBar1.add(mnTrabajador);
+
+        mnCliente.setText("Clientes");
+
+        mnAgregarCliente.setText("Agregar");
+        mnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnAgregarClienteActionPerformed(evt);
+            }
+        });
+        mnCliente.add(mnAgregarCliente);
+
+        jMenuBar1.add(mnCliente);
+
+        mnReportes.setText("Reportes");
+
+        mnListadoPorSexo.setText("Listado Por Sexo");
+        mnListadoPorSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoPorSexoActionPerformed(evt);
+            }
+        });
+        mnReportes.add(mnListadoPorSexo);
+
+        jMenuBar1.add(mnReportes);
 
         setJMenuBar(jMenuBar1);
 
@@ -125,34 +136,34 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarActionPerformed
-        // TODO add your handling code here:
-        Agregar a = new Agregar(this, true);
-        a.setVisible(true);
-    }//GEN-LAST:event_mnAgregarActionPerformed
-
     private void mnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_mnSalirActionPerformed
 
-    private void mnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnModificarActionPerformed
+    private void mnListadoCompletoTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoCompletoTrabajadorActionPerformed
         // TODO add your handling code here:
-        Modificar m = new Modificar(this, true);
-        m.setVisible(true);
-    }//GEN-LAST:event_mnModificarActionPerformed
-
-    private void mnListadoCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoCompletoActionPerformed
-        // TODO add your handling code here:
-        ListadoCompleto lc = new ListadoCompleto(this,true);
-        lc.setVisible(true);
-    }//GEN-LAST:event_mnListadoCompletoActionPerformed
+        ListadoCompletoTrabajador lct = new ListadoCompletoTrabajador(this,true);
+        lct.setVisible(true);
+    }//GEN-LAST:event_mnListadoCompletoTrabajadorActionPerformed
 
     private void mnListadoPorSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPorSexoActionPerformed
         // TODO add your handling code here:
         ListadoPorSexo lps = new ListadoPorSexo(this,true);
         lps.setVisible(true);
     }//GEN-LAST:event_mnListadoPorSexoActionPerformed
+
+    private void mnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarClienteActionPerformed
+        // TODO add your handling code here:
+        AgregarCliente ac = new AgregarCliente(this, true);
+        ac.setVisible(true);
+    }//GEN-LAST:event_mnAgregarClienteActionPerformed
+
+    private void mnAgregarTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarTrabajadorActionPerformed
+        // TODO add your handling code here:
+        AgregarTrabajador at = new AgregarTrabajador(this, true);
+        at.setVisible(true);
+    }//GEN-LAST:event_mnAgregarTrabajadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,12 +205,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblImagen;
-    private javax.swing.JMenuItem mnAgregar;
-    private javax.swing.JMenuItem mnListadoCompleto;
+    private javax.swing.JMenuItem mnAgregarCliente;
+    private javax.swing.JMenuItem mnAgregarTrabajador;
+    private javax.swing.JMenu mnCliente;
+    private javax.swing.JMenuItem mnListadoCompletoTrabajador;
     private javax.swing.JMenuItem mnListadoPorSexo;
-    private javax.swing.JMenuItem mnModificar;
     private javax.swing.JMenu mnOpciones;
     private javax.swing.JMenu mnReportes;
     private javax.swing.JMenuItem mnSalir;
+    private javax.swing.JMenu mnTrabajador;
     // End of variables declaration//GEN-END:variables
 }
