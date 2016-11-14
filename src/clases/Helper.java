@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -84,7 +85,6 @@ public class Helper {
         return m;
     }
   
-    
     public static LinkedList traerDatos(String ruta){
         FileInputStream archivo;
         ObjectInputStream entrada;
@@ -106,7 +106,7 @@ public class Helper {
         return personas;
     }
     
-    public static void llenarTablaTrabajadores(JTable tabla, String ruta){
+    public static void llenarTablaTrabajadores(JTable tabla, String ruta) {
         DefaultTableModel tm;
         int nf;
         LinkedList<Trabajador> trabajadores = traerDatos(ruta);
@@ -125,7 +125,7 @@ public class Helper {
         }
     }
     
-     public static void llenarTablaClientes(JTable tabla, String ruta){
+    public static void llenarTablaClientes(JTable tabla, String ruta) {
         DefaultTableModel tm;
         int nf;
         LinkedList<Cliente> clientes = traerDatos(ruta);
@@ -287,7 +287,7 @@ public class Helper {
         Trabajador t;
         for (int i = 0; i < trabajadores.size(); i++) {
             t = trabajadores.get(i);
-           dcbm.addElement(t.getCc()+" - "+t.getNombre()+" "+t.getApellido());
+            dcbm.addElement(t.getCc()+" - "+t.getNombre()+" "+t.getApellido());
         }
     } 
     

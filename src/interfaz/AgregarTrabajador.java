@@ -183,7 +183,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         });
         jPanel3.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 30));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 130, 310));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 130, 310));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Trabajadores"));
         jPanel4.setOpaque(false);
@@ -212,22 +212,22 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblTrabajadores);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 490, 210));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 640, 210));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 510, 240));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 660, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(573, 628));
+        setSize(new java.awt.Dimension(711, 628));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

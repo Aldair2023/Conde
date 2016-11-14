@@ -38,7 +38,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         rutaT = "src/datos/trabajadores.txt";
         Helper.llenarComboTrabajadores(cmbEncargado, rutaT);
         try {
-            clientes = Helper.traerDatos(rutaT);
+            clientes = Helper.traerDatos(rutaC);
             salida = new ObjectOutputStream(new FileOutputStream(rutaC));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -283,7 +283,7 @@ public class AgregarCliente extends javax.swing.JDialog {
             i = tblClientes.getSelectedRow();
             clientes.remove(i);
             try {
-                salida = new ObjectOutputStream(new FileOutputStream(rutaT));
+                salida = new ObjectOutputStream(new FileOutputStream(rutaC));
             } catch (FileNotFoundException ex) {
                 System.out.println(ex.getMessage());
             } catch (IOException ex) {
