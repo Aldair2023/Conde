@@ -125,17 +125,11 @@ public class AgregarCliente extends javax.swing.JDialog {
                 txtApellidoKeyTyped(evt);
             }
         });
-        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 140, 27));
+        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 120, 140, 27));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Sexo:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        txtAddress.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAddressKeyTyped(evt);
-            }
-        });
         jPanel2.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 140, 27));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -422,6 +416,7 @@ public class AgregarCliente extends javax.swing.JDialog {
             txtApellido.setText(c.getApellido());
             txtAddress.setText(c.getAddress());
             txtNumTel.setText(c.getNum_tel());
+            txtNumTelFiador.setText(c.getNum_tel_fiador());
             encargado = c.getEncargado();
             auxEncargado = encargado.getCc() + " - " + encargado.getNombre() + " " + encargado.getApellido();
             cmbEncargado.setSelectedItem(auxEncargado);
@@ -464,15 +459,6 @@ public class AgregarCliente extends javax.swing.JDialog {
             evt.consume(); 
         } 
     }//GEN-LAST:event_txtApellidoKeyTyped
-
-    private void txtAddressKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressKeyTyped
-        // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
-    }//GEN-LAST:event_txtAddressKeyTyped
 
     private void txtNumTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumTelKeyTyped
         // TODO add your handling code here:

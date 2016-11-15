@@ -56,6 +56,9 @@ public class Principal extends javax.swing.JFrame {
 
         lblImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/portada.jpg"))); // NOI18N
 
+        jMenuBar1.setBackground(new java.awt.Color(255, 153, 153));
+        jMenuBar1.setForeground(new java.awt.Color(255, 204, 204));
+
         mnOpciones.setText("Opciones");
         mnOpciones.add(jSeparator1);
 
