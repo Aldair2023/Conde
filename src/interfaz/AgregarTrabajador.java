@@ -64,9 +64,9 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        cmbSexo = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
         txtNumTel = new javax.swing.JTextField();
+        cmbSexo = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         cmdCancelar = new javax.swing.JButton();
         cmdEliminar = new javax.swing.JButton();
@@ -127,9 +127,6 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         jLabel6.setText("Teléfono:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 213, -1, -1));
 
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
-        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 255, 140, 30));
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Dirección:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 169, -1, -1));
@@ -140,6 +137,9 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             }
         });
         jPanel2.add(txtNumTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 210, 140, 27));
+
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
+        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 140, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 310));
 

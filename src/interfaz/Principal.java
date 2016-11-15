@@ -39,7 +39,7 @@ public class Principal extends javax.swing.JFrame {
         lblImagen = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnOpciones = new javax.swing.JMenu();
-        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         mnSalir = new javax.swing.JMenuItem();
         mnTrabajador = new javax.swing.JMenu();
         mnAgregarTrabajador = new javax.swing.JMenuItem();
@@ -60,7 +60,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.setForeground(new java.awt.Color(255, 204, 204));
 
         mnOpciones.setText("Opciones");
-        mnOpciones.add(jSeparator1);
+        mnOpciones.add(jSeparator2);
 
         mnSalir.setText("Salir");
         mnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(666, 442));
@@ -206,7 +206,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JMenuItem mnAgregarCliente;
     private javax.swing.JMenuItem mnAgregarTrabajador;
