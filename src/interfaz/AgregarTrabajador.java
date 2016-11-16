@@ -53,6 +53,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -66,12 +67,14 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtNumTel = new javax.swing.JTextField();
-        cmbSexo = new javax.swing.JComboBox();
-        jPanel3 = new javax.swing.JPanel();
-        cmdCancelar = new javax.swing.JButton();
-        cmdEliminar = new javax.swing.JButton();
-        cmdGuardar = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        rbtM = new javax.swing.JRadioButton();
+        rbtF = new javax.swing.JRadioButton();
+        rbtI = new javax.swing.JRadioButton();
         cmdBuscar = new javax.swing.JButton();
+        cmdGuardar = new javax.swing.JButton();
+        cmdEliminar = new javax.swing.JButton();
+        cmdCancelar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTrabajadores = new javax.swing.JTable();
@@ -81,7 +84,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos Trabajador:"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -120,72 +123,77 @@ public class AgregarTrabajador extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Sexo:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 257, -1, -1));
-        jPanel2.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 165, 140, 27));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 125, -1, -1));
+        jPanel2.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 140, 27));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Teléfono:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 213, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 81, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Dirección:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 169, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 37, -1, -1));
 
         txtNumTel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNumTelKeyTyped(evt);
             }
         });
-        jPanel2.add(txtNumTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 210, 140, 27));
+        jPanel2.add(txtNumTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 75, 140, 27));
 
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
-        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 140, 30));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 260, 310));
+        rbtM.setText("M");
+        jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, -1, -1));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Opciones"));
-        jPanel3.setOpaque(false);
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        rbtF.setText("F");
+        jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 4, -1, -1));
 
-        cmdCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdCancelar.setText("Cancelar");
-        cmdCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdCancelarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(cmdCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 90, 30));
+        rbtI.setText("I");
+        jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 4, -1, -1));
 
-        cmdEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdEliminar.setText("Eliminar");
-        cmdEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdEliminarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(cmdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
-
-        cmdGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdGuardar.setText("Guardar");
-        cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdGuardarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 90, 30));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 140, 30));
 
         cmdBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdBuscar.setText("Buscar");
+        cmdBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         cmdBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdBuscarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, 30));
+        jPanel2.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 185, 90, 35));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 130, 310));
+        cmdGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmdGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdGuardarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 185, 90, 35));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Trabajadores"));
+        cmdEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmdEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
+        cmdEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdEliminarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 185, 90, 35));
+
+        cmdCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmdCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
+        cmdCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmdCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 185, 90, 35));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 660, 250));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Trabajadores"));
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -212,9 +220,9 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tblTrabajadores);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 640, 210));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 640, 240));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 660, 240));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 660, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,10 +232,10 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(711, 628));
+        setSize(new java.awt.Dimension(711, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -253,7 +261,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             txtApellido.setText("");
             txtAddress.setText("");
             txtNumTel.setText("");
-            cmbSexo.setSelectedIndex(0);
+            btgSexo.clearSelection();
             txtCc.requestFocusInWindow();
             JButton botonesH[]={cmdBuscar,cmdCancelar};
             JButton botonesD[]={cmdEliminar,cmdGuardar};
@@ -265,13 +273,25 @@ public class AgregarTrabajador extends javax.swing.JDialog {
 
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
         // TODO add your handling code here:
-        String cc, nombre, apellido, address, num_tel, sexo;
+        String cc, nombre, apellido, address, num_tel, sexo="";
         cc = txtCc.getText();
         nombre = txtNombre.getText();
         apellido = txtApellido.getText();
         address = txtAddress.getText();
         num_tel = txtNumTel.getText();
-        sexo = cmbSexo.getSelectedItem().toString();
+        if (rbtM.isSelected()) {
+            sexo = "Masculino";
+        }
+        else if(rbtF.isSelected()) {
+            sexo = "Femenino";
+        }
+        else if(rbtI.isSelected()) {
+            sexo = "Indefinido";
+        }
+        else {
+            Helper.mensaje(this, "Seleccione un sexo, por favor.",2);
+            btgSexo.setSelected(rbtM.getModel(), true);
+        }
         /*if (cc.equals(Helper.traerPersonaCedula(cc, ruta).getCc())) {
                 Helper.mensaje(this, "Ya existe con esta cédula.", 3);
         }*/
@@ -297,7 +317,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         txtApellido.setText("");
         txtAddress.setText("");
         txtNumTel.setText("");
-        cmbSexo.setSelectedIndex(0);
+        btgSexo.clearSelection();
         txtCc.requestFocusInWindow();
         JButton botonesH[]={cmdBuscar,cmdCancelar};
         JButton botonesD[]={cmdEliminar,cmdGuardar};
@@ -312,7 +332,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         txtApellido.setText("");
         txtAddress.setText("");
         txtNumTel.setText("");
-        cmbSexo.setSelectedIndex(0);
+        btgSexo.clearSelection();
         txtCc.requestFocusInWindow();
         JButton botonesH[]={cmdBuscar,cmdCancelar};
         JButton botonesD[]={cmdEliminar,cmdGuardar};
@@ -332,6 +352,15 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         txtApellido.setText(t.getApellido());
         txtAddress.setText(t.getAddress());
         txtNumTel.setText(t.getNum_tel());
+        if (t.getSexo().equals("Masculino")) {
+            btgSexo.setSelected(rbtM.getModel(), true);
+        }
+        else if (t.getSexo().equals("Femenino")) {
+            btgSexo.setSelected(rbtF.getModel(), true);
+        }
+        else {
+            btgSexo.setSelected(rbtI.getModel(), true);
+        }
         aux = 1;
         JButton botonesH[]={cmdEliminar,cmdGuardar,cmdCancelar};
         JButton botonesD[]={cmdBuscar};
@@ -353,7 +382,15 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             txtApellido.setText(t.getApellido());
             txtAddress.setText(t.getAddress());
             txtNumTel.setText(t.getNum_tel());
-            cmbSexo.setSelectedItem(t.getSexo());
+            if (t.getSexo().equals("Masculino")) {
+                rbtM.setSelected(true);
+            }
+            else if (t.getSexo().equals("Femenino")) {
+                rbtF.setSelected(true);
+            }
+            else {
+                rbtI.setSelected(true);
+            }   
             aux = 1;
         }
         else {
@@ -445,7 +482,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cmbSexo;
+    private javax.swing.ButtonGroup btgSexo;
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JButton cmdCancelar;
     private javax.swing.JButton cmdEliminar;
@@ -458,9 +495,12 @@ public class AgregarTrabajador extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbtF;
+    private javax.swing.JRadioButton rbtI;
+    private javax.swing.JRadioButton rbtM;
     private javax.swing.JTable tblTrabajadores;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtApellido;

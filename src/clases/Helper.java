@@ -134,15 +134,15 @@ public class Helper {
         tm.setRowCount(nf);
         for (int i = 0; i < nf; i++) {
             tabla.setValueAt(i+1, i, 0);
-            tabla.setValueAt(clientes.get(i).getDeuda(), i, 1);
-            tabla.setValueAt(clientes.get(i).getNum_tel_fiador(), i, 2);
-            tabla.setValueAt(clientes.get(i).getEncargado().getNombre(), i, 3);
-            tabla.setValueAt(clientes.get(i).getCc(), i, 4);
-            tabla.setValueAt(clientes.get(i).getNombre(), i, 5);
-            tabla.setValueAt(clientes.get(i).getApellido(), i, 6);
-            tabla.setValueAt(clientes.get(i).getAddress(), i, 7);
-            tabla.setValueAt(clientes.get(i).getNum_tel(), i, 8);
-            tabla.setValueAt(clientes.get(i).getSexo(), i, 9);
+            tabla.setValueAt(clientes.get(i).getCc(), i, 1);
+            tabla.setValueAt(clientes.get(i).getNombre(), i, 2);
+            tabla.setValueAt(clientes.get(i).getApellido(), i, 3);
+            tabla.setValueAt(clientes.get(i).getSexo(), i, 4);
+            tabla.setValueAt(clientes.get(i).getAddress(), i, 5);
+            tabla.setValueAt(clientes.get(i).getNum_tel(), i, 6);
+            tabla.setValueAt(clientes.get(i).getNum_tel_fiador(), i, 7);
+            tabla.setValueAt(clientes.get(i).getEncargado().getNombre(), i, 8);
+            tabla.setValueAt(clientes.get(i).getDeuda(), i, 9);
         }
     }
     
@@ -173,15 +173,15 @@ public class Helper {
         tm.setRowCount(nf);
         for (int i = 0; i < nf; i++) {
             tabla.setValueAt(i+1, i, 0);
-            tabla.setValueAt(clientes.get(i).getDeuda(), i, 1);
-            tabla.setValueAt(clientes.get(i).getNum_tel_fiador(), i, 2);
-            tabla.setValueAt(clientes.get(i).getEncargado().getNombre(), i, 3);
-            tabla.setValueAt(clientes.get(i).getCc(), i, 4);
-            tabla.setValueAt(clientes.get(i).getNombre(), i, 5);
-            tabla.setValueAt(clientes.get(i).getApellido(), i, 6);
-            tabla.setValueAt(clientes.get(i).getAddress(), i, 7);
-            tabla.setValueAt(clientes.get(i).getNum_tel(), i, 8);
-            tabla.setValueAt(clientes.get(i).getSexo(), i, 9);
+            tabla.setValueAt(clientes.get(i).getCc(), i, 1);
+            tabla.setValueAt(clientes.get(i).getNombre(), i, 2);
+            tabla.setValueAt(clientes.get(i).getApellido(), i, 3);
+            tabla.setValueAt(clientes.get(i).getSexo(), i, 4);
+            tabla.setValueAt(clientes.get(i).getAddress(), i, 5);
+            tabla.setValueAt(clientes.get(i).getNum_tel(), i, 6);
+            tabla.setValueAt(clientes.get(i).getNum_tel_fiador(), i, 7);
+            tabla.setValueAt(clientes.get(i).getEncargado().getNombre(), i, 8);
+            tabla.setValueAt(clientes.get(i).getDeuda(), i, 9);
         }
     }
     

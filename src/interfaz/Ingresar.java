@@ -20,8 +20,8 @@ public class Ingresar extends javax.swing.JFrame {
     String user, pass;
     public Ingresar() {
         initComponents();
-        user = "admin";
-        pass = "code325";
+        user = "conde";
+        pass = "conde16";
     }
 
     /**
@@ -42,6 +42,7 @@ public class Ingresar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("INGRESAR");
+        setIconImage(getIconImage());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

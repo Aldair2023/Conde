@@ -56,6 +56,7 @@ public class AgregarCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -73,9 +74,12 @@ public class AgregarCliente extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         txtNumTelFiador = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cmbSexo = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         txtDeuda = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        rbtM = new javax.swing.JRadioButton();
+        rbtF = new javax.swing.JRadioButton();
+        rbtI = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         cmdCancelar = new javax.swing.JButton();
         cmdEliminar = new javax.swing.JButton();
@@ -90,7 +94,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos Cliente:"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -118,7 +122,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Deuda:");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 175, -1, -1));
 
         txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -129,25 +133,25 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Sexo:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-        jPanel2.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 140, 27));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 175, -1, -1));
+        jPanel2.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 140, 27));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Teléfono:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 81, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 81, -1, -1));
 
-        jPanel2.add(cmbEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 140, 27));
+        jPanel2.add(cmbEncargado, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 197, 200, 30));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Dirección:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 37, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 37, -1, -1));
 
         txtNumTel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNumTelKeyTyped(evt);
             }
         });
-        jPanel2.add(txtNumTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 75, 140, 27));
+        jPanel2.add(txtNumTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 75, 140, 27));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Apellido:");
@@ -158,71 +162,85 @@ public class AgregarCliente extends javax.swing.JDialog {
                 txtNumTelFiadorKeyTyped(evt);
             }
         });
-        jPanel2.add(txtNumTelFiador, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 140, 27));
+        jPanel2.add(txtNumTelFiador, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 140, 27));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Encargado:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
-
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
-        jPanel2.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 140, 27));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 175, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Teléfono (fiador):");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 125, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 125, -1, -1));
 
         txtDeuda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtDeudaKeyTyped(evt);
             }
         });
-        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 160, 27));
+        jPanel2.add(txtDeuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 197, 160, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 520, 250));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Opciones"));
+        btgSexo.add(rbtM);
+        rbtM.setText("M");
+        jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, -1, -1));
+
+        btgSexo.add(rbtF);
+        rbtF.setText("F");
+        jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 4, -1, -1));
+
+        btgSexo.add(rbtI);
+        rbtI.setText("I");
+        jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 4, -1, -1));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 197, 160, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 610, 250));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setOpaque(false);
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdCancelar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdCancelar.setText("Cancelar");
+        cmdCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel.png"))); // NOI18N
         cmdCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdCancelarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
+        jPanel3.add(cmdCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 190, 85, 35));
 
         cmdEliminar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdEliminar.setText("Eliminar");
+        cmdEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         cmdEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdEliminarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 90, 30));
+        jPanel3.add(cmdEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 135, 85, 35));
 
         cmdGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdGuardar.setText("Guardar");
+        cmdGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
         cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdGuardarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 30));
+        jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 81, 85, 35));
 
         cmdBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdBuscar.setText("Buscar");
+        cmdBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         cmdBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdBuscarActionPerformed(evt);
             }
         });
-        jPanel3.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 90, 30));
+        jPanel3.add(cmdBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 27, 85, 35));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 130, 250));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 130, 250));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Clientes"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Clientes:"));
         jPanel4.setOpaque(false);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -231,7 +249,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
             },
             new String [] {
-                "No.", "Deuda", "Teléfono2", "Encargado", "Cédula", "Nombre", "Apeliido", "Dirección", "Teléfono1", "Sexo"
+                "No.", "Cédula", "Nombre", "Apellido", "Sexo", "Dirección", "Teléfono1", "Teléfono2", "Encargado", "Deuda"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -242,6 +260,7 @@ public class AgregarCliente extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tblClientes.setOpaque(false);
         tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblClientesMouseClicked(evt);
@@ -251,20 +270,20 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 760, 250));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 780, 280));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 275, 780, 280));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(814, 598));
+        setSize(new java.awt.Dimension(836, 604));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,7 +312,7 @@ public class AgregarCliente extends javax.swing.JDialog {
             txtNumTelFiador.setText("");
             txtDeuda.setText("");
             cmbEncargado.setSelectedIndex(0);
-            cmbSexo.setSelectedIndex(0);
+            btgSexo.clearSelection();
             txtCc.requestFocusInWindow();
             JButton botonesH[]={cmdBuscar,cmdCancelar};
             JButton botonesD[]={cmdEliminar,cmdGuardar};
@@ -305,7 +324,7 @@ public class AgregarCliente extends javax.swing.JDialog {
 
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
         // TODO add your handling code here:
-        String deuda, cc, nombre, apellido, address, num_tel, num_tel_fiador, sexo, auxEncargado, ccEncargado;
+        String deuda, cc, nombre, apellido, address, num_tel, num_tel_fiador, sexo="", auxEncargado, ccEncargado;
         Trabajador encargado;
         int indice;
         deuda = txtDeuda.getText();
@@ -315,7 +334,19 @@ public class AgregarCliente extends javax.swing.JDialog {
         address = txtAddress.getText();
         num_tel = txtNumTel.getText();
         num_tel_fiador = txtNumTelFiador.getText();
-        sexo = cmbSexo.getSelectedItem().toString();
+        if (rbtM.isSelected()) {
+            sexo = "Masculino";
+        }
+        else if(rbtF.isSelected()) {
+            sexo = "Femenino";
+        }
+        else if(rbtI.isSelected()) {
+            sexo = "Indefinido";
+        }
+        else {
+            Helper.mensaje(this, "Seleccione un sexo, por favor.",2);
+            btgSexo.setSelected(rbtM.getModel(), true);
+        }
         auxEncargado = cmbEncargado.getSelectedItem().toString();
         indice = auxEncargado.indexOf("-") - 1;
         ccEncargado = auxEncargado.substring(0, indice);
@@ -348,7 +379,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         txtNumTelFiador.setText("");
         txtDeuda.setText("");
         cmbEncargado.setSelectedIndex(0);
-        cmbSexo.setSelectedIndex(0);
+        btgSexo.clearSelection();
         txtCc.requestFocusInWindow();
         JButton botonesH[]={cmdBuscar,cmdCancelar};
         JButton botonesD[]={cmdEliminar,cmdGuardar};
@@ -366,7 +397,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         txtNumTelFiador.setText("");
         txtDeuda.setText("");
         cmbEncargado.setSelectedIndex(0);
-        cmbSexo.setSelectedIndex(0);
+        btgSexo.clearSelection();
         txtCc.requestFocusInWindow();
         JButton botonesH[]={cmdBuscar,cmdCancelar};
         JButton botonesD[]={cmdEliminar,cmdGuardar};
@@ -393,7 +424,15 @@ public class AgregarCliente extends javax.swing.JDialog {
         encargado = c.getEncargado();
         auxEncargado = encargado.getCc() + " - " + encargado.getNombre() + " " + encargado.getApellido();
         cmbEncargado.setSelectedItem(auxEncargado);
-        cmbSexo.setSelectedItem(c.getSexo());
+        if (c.getSexo().equals("Masculino")) {
+            btgSexo.setSelected(rbtM.getModel(), true);
+        }
+        else if (c.getSexo().equals("Femenino")) {
+            btgSexo.setSelected(rbtF.getModel(), true);
+        }
+        else {
+            btgSexo.setSelected(rbtI.getModel(), true);
+        } 
         aux = 1;
         JButton botonesH[]={cmdEliminar,cmdGuardar,cmdCancelar};
         JButton botonesD[]={cmdBuscar};
@@ -420,7 +459,15 @@ public class AgregarCliente extends javax.swing.JDialog {
             encargado = c.getEncargado();
             auxEncargado = encargado.getCc() + " - " + encargado.getNombre() + " " + encargado.getApellido();
             cmbEncargado.setSelectedItem(auxEncargado);
-            cmbSexo.setSelectedItem(c.getSexo());
+            if (c.getSexo().equals("Masculino")) {
+                rbtM.setSelected(true);
+            }
+            else if (c.getSexo().equals("Femenino")) {
+                rbtF.setSelected(true);
+            }
+            else {
+                rbtI.setSelected(true);
+            }   
             aux = 1;
         }
         else {
@@ -480,6 +527,11 @@ public class AgregarCliente extends javax.swing.JDialog {
 
     private void txtDeudaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeudaKeyTyped
         // TODO add your handling code here:
+        char c=evt.getKeyChar(); 
+        if(!Character.isDigit(c)) { 
+            getToolkit().beep(); 
+            evt.consume(); 
+        }
     }//GEN-LAST:event_txtDeudaKeyTyped
 
     /**
@@ -526,8 +578,8 @@ public class AgregarCliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btgSexo;
     private javax.swing.JComboBox cmbEncargado;
-    private javax.swing.JComboBox cmbSexo;
     private javax.swing.JButton cmdBuscar;
     private javax.swing.JButton cmdCancelar;
     private javax.swing.JButton cmdEliminar;
@@ -545,7 +597,11 @@ public class AgregarCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbtF;
+    private javax.swing.JRadioButton rbtI;
+    private javax.swing.JRadioButton rbtM;
     private javax.swing.JTable tblClientes;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtApellido;
