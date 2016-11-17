@@ -100,7 +100,7 @@ public class Ingresar extends javax.swing.JFrame {
             txtPass.selectAll();
         }
         else {
-            Helper.mensaje(this, "¡Sesión iniciada correctamente!", 1);
+            Helper.mensaje(this, "¡Sesión iniciada exitosamente!", 1);
             Principal p = new Principal();
             p.setVisible(true);
             this.dispose();

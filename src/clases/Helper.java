@@ -7,6 +7,7 @@
 package clases;
 
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -185,7 +186,7 @@ public class Helper {
         }
     }
     
-    public static void listadoPorSexo(JTable tabla, String ruta, String sexo){
+    public static void listadoPorSexoTrabajador(JTable tabla, String ruta, String sexo){
         LinkedList<Trabajador> trabajadores = traerDatos(ruta);
         LinkedList<Trabajador> trabajadoresFiltradas = new LinkedList();
         for (int i = 0; i < trabajadores.size(); i++) {
@@ -194,6 +195,113 @@ public class Helper {
             }
         }
         llenarTablaTrabajadores(tabla, trabajadoresFiltradas);
+    }
+    
+    public static String cantidadTrabajadores(String ruta, String sexo){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        LinkedList<Trabajador> trabajadoresFiltrados = new LinkedList();
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getSexo().equals(sexo)) {
+                trabajadoresFiltrados.add(trabajadores.get(i));
+            }
+        }
+        return "Hay " +trabajadoresFiltrados.size() + " trabajador(es) de sexo "+sexo+".";
+    }
+    
+     public static String cantidadTrabajadores(String ruta, String sexo, String sexo2){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        LinkedList<Trabajador> trabajadoresFiltrados = new LinkedList();
+        LinkedList<Trabajador> trabajadoresFiltrados2 = new LinkedList();
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getSexo().equals(sexo)) {
+                trabajadoresFiltrados.add(trabajadores.get(i));
+            }
+            if (trabajadores.get(i).getSexo().equals(sexo2)) {
+                trabajadoresFiltrados2.add(trabajadores.get(i));
+            }
+        }
+        return "Hay " +trabajadoresFiltrados.size() + " trabajador(es) de sexo "+sexo+" y "
+                +trabajadoresFiltrados2.size()+" trabajador(es) de sexo "+sexo2+" .";
+    }
+     
+     public static String cantidadTrabajadores(String ruta, String sexo, String sexo2, String sexo3){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        LinkedList<Trabajador> trabajadoresFiltrados = new LinkedList();
+        LinkedList<Trabajador> trabajadoresFiltrados2 = new LinkedList();
+        LinkedList<Trabajador> trabajadoresFiltrados3 = new LinkedList();
+        for (int i = 0; i < trabajadores.size(); i++) {
+            if (trabajadores.get(i).getSexo().equals(sexo)) {
+                trabajadoresFiltrados.add(trabajadores.get(i));
+            }
+            if (trabajadores.get(i).getSexo().equals(sexo2)) {
+                trabajadoresFiltrados2.add(trabajadores.get(i));
+            }
+            if (trabajadores.get(i).getSexo().equals(sexo3)) {
+                trabajadoresFiltrados3.add(trabajadores.get(i));
+            }
+        }
+        return "Hay " +trabajadoresFiltrados.size() + " trabajador(es) de sexo "+sexo+", "
+                +trabajadoresFiltrados2.size()+" trabajador(es) de sexo "+sexo2+", "+" y "
+                +trabajadoresFiltrados3.size()+" trabajador(es) de sexo "+sexo3+" .";
+    }
+     
+     public static String cantidadClientes(String ruta, String sexo){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        LinkedList<Cliente> clientesFiltrados = new LinkedList();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getSexo().equals(sexo)) {
+                clientesFiltrados.add(clientes.get(i));
+            }
+        }
+        return "Hay " +clientesFiltrados.size() + " cliente(s) de sexo "+sexo+".";
+    }
+    
+     public static String cantidadClientes(String ruta, String sexo, String sexo2){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        LinkedList<Cliente> clientesFiltrados = new LinkedList();
+        LinkedList<Cliente> clientesFiltrados2 = new LinkedList();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getSexo().equals(sexo)) {
+                clientesFiltrados.add(clientes.get(i));
+            }
+            if (clientes.get(i).getSexo().equals(sexo2)) {
+                clientesFiltrados2.add(clientes.get(i));
+            }
+        }
+        return "Hay " +clientesFiltrados.size() + " cliente(s) de sexo "+sexo+" y "
+                +clientesFiltrados2.size()+" cliente(s) de sexo "+sexo2+" .";
+    }
+     
+     public static String cantidadClientes(String ruta, String sexo, String sexo2, String sexo3){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        LinkedList<Cliente> clientesFiltrados = new LinkedList();
+        LinkedList<Cliente> clientesFiltrados2 = new LinkedList();
+        LinkedList<Cliente> clientesFiltrados3 = new LinkedList();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getSexo().equals(sexo)) {
+                clientesFiltrados.add(clientes.get(i));
+            }
+            if (clientes.get(i).getSexo().equals(sexo2)) {
+                clientesFiltrados2.add(clientes.get(i));
+            }
+            if (clientes.get(i).getSexo().equals(sexo3)) {
+                clientesFiltrados3.add(clientes.get(i));
+            }
+        }
+        return "Hay " +clientesFiltrados.size() + " cliente(s) de sexo "+sexo+", "
+                +clientesFiltrados2.size()+" cliente(s) de sexo "+sexo2+", "+" y "
+                +clientesFiltrados3.size()+" cliente(s) de sexo "+sexo3+" .";
+    }
+     
+    public static void listadoPorSexoCliente(JTable tabla, String ruta, String sexo){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        LinkedList<Cliente> clientesFiltrados = new LinkedList();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getSexo().equals(sexo)) {
+                clientesFiltrados.add(clientes.get(i));
+            }
+        }
+        llenarTablaClientes(tabla, clientesFiltrados);
     }
     
     public static void volcado(ObjectOutputStream salida, LinkedList personas){
@@ -288,6 +396,22 @@ public class Helper {
             t = trabajadores.get(i);
             dcbm.addElement(t.getCc()+" - "+t.getNombre()+" "+t.getApellido());
         }
+    }
+    
+    public static void ingresarSoloLetras(char c, KeyEvent evt){
+        if(!Character.isLetter(c)) { 
+            evt.consume(); 
+        }
+    }
+    
+    public static void ingresarSoloNums(char c, KeyEvent evt){
+        if(!Character.isDigit(c)) { 
+            evt.consume(); 
+        }
+    }
+    
+    public static void eliminarTrabajador(String rutaC, String rutaT){
+        
     }
     
 

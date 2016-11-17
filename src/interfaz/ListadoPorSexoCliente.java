@@ -11,18 +11,18 @@ import clases.Helper;
  *
  * @author rmorales1
  */
-public class ListadoPorSexo extends javax.swing.JDialog {
+public class ListadoPorSexoCliente extends javax.swing.JDialog {
 
     /**
      * Creates new form Agregar
      */
-    String ruta;
+    String rutaC;
    
     
-    public ListadoPorSexo(java.awt.Frame parent, boolean modal) {
+    public ListadoPorSexoCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ruta = "src/datos/people.txt";
+        rutaC = "src/datos/clientes.txt";
     }
 
     /**
@@ -36,14 +36,12 @@ public class ListadoPorSexo extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblTablaPersonas = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblClientes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        cmdListar = new javax.swing.JButton();
-        cmbSexo = new javax.swing.JComboBox();
+        cmbSexo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -59,82 +57,76 @@ public class ListadoPorSexo extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fn.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("AGREGAR PERSONAS");
+        setTitle("CLIENTES");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Personas"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Trabajadores:"));
         jPanel5.setOpaque(false);
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblTablaPersonas.setModel(new javax.swing.table.DefaultTableModel(
+        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "No.", "Cédula", "Nombre", "Apellido", "Deuda", "Sexo"
+                "No.", "Cédula", "Nombre", "Apellido", "Sexo", "Dirección", "Teléfono1", "Teléfono2", "Encargado", "Deuda"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tblTablaPersonas.setOpaque(false);
-        jScrollPane2.setViewportView(tblTablaPersonas);
+        tblClientes.setOpaque(false);
+        jScrollPane3.setViewportView(tblClientes);
 
-        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 460, 260));
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 790, 250));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 480, 290));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 810, 280));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("LISTADO POR SEXO");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+        jLabel1.setText("LISTADO POR SEXO DE CLIENTES");
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
-        cmdListar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmdListar.setText("Listar");
-        cmdListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmdListarActionPerformed(evt);
+        cmbSexo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----------", "Masculino", "Femenino", "Indefinido" }));
+        cmbSexo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSexoItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmdListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 100, 30));
+        jPanel1.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 180, 30));
 
-        cmbSexo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cmbSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Femenino", "Indefinido" }));
-        jPanel1.add(cmbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, 110, 30));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fn.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 500, 390));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Sexo:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(512, 409));
+        setSize(new java.awt.Dimension(846, 434));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmdListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdListarActionPerformed
+    private void cmbSexoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSexoItemStateChanged
         // TODO add your handling code here:
         String sexo = cmbSexo.getSelectedItem().toString();
-        Helper.listadoPorSexo(tblTablaPersonas, ruta, sexo);
-    }//GEN-LAST:event_cmdListarActionPerformed
+        Helper.listadoPorSexoCliente(tblClientes, rutaC, sexo);
+    }//GEN-LAST:event_cmbSexoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -153,14 +145,18 @@ public class ListadoPorSexo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListadoPorSexo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListadoPorSexoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -169,7 +165,7 @@ public class ListadoPorSexo extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ListadoPorSexo dialog = new ListadoPorSexo(new javax.swing.JFrame(), true);
+                ListadoPorSexoCliente dialog = new ListadoPorSexoCliente(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -182,16 +178,14 @@ public class ListadoPorSexo extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cmbSexo;
-    private javax.swing.JButton cmdListar;
+    private javax.swing.JComboBox<String> cmbSexo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable tblTablaPersonas;
+    private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }

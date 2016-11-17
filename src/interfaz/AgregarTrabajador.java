@@ -31,8 +31,6 @@ public class AgregarTrabajador extends javax.swing.JDialog {
     public AgregarTrabajador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        JButton botonesH[]={cmdBuscar, cmdGuardar, cmdCancelar};
-        JButton botonesD[]={cmdEliminar};
         ruta = "src/datos/trabajadores.txt";
         try {
             trabajadores = Helper.traerDatos(ruta);
@@ -42,6 +40,11 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         }
         Helper.volcado(salida, trabajadores);
         Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
+        
+        JButton botonesH[]={cmdBuscar};
+        JButton botonesD[]={cmdGuardar, cmdEliminar, cmdCancelar};
+        Helper.habilitarBotones(botonesH);
+        Helper.deshabilitarBotones(botonesD);
     }
 
     /**
@@ -145,13 +148,13 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         rbtM.setText("M");
-        jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, -1, -1));
+        jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
         rbtF.setText("F");
-        jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 4, -1, -1));
+        jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 5, -1, -1));
 
         rbtI.setText("I");
-        jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 4, -1, -1));
+        jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 5, -1, -1));
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, 140, 30));
 
@@ -254,7 +257,79 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
+            Helper.mensaje(this, "Trabajador eliminado exitosamente.", 1);
             Helper.volcado(salida, trabajadores);
+            Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
+            txtCc.setText("");
+            txtNombre.setText("");
+            txtApellido.setText("");
+            txtAddress.setText("");
+            txtNumTel.setText("");
+            btgSexo.clearSelection();
+            txtCc.requestFocusInWindow();
+            
+            JButton botonesH[]={cmdBuscar,cmdCancelar};
+            JButton botonesD[]={cmdEliminar,cmdGuardar};
+            Helper.habilitarBotones(botonesH);
+            Helper.deshabilitarBotones(botonesD);
+        }
+        
+    }//GEN-LAST:event_cmdEliminarActionPerformed
+
+    private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
+        // TODO add your handling code here:
+        if (txtNombre.getText().isEmpty()){
+            Helper.mensaje(this, "Ingrese un nombre.",2);
+            txtNombre.requestFocusInWindow();
+        }
+        else if (txtApellido.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese un apellido.",2);
+            txtApellido.requestFocusInWindow();
+        }
+        else if (txtAddress.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese una dirección.",2);
+            txtAddress.requestFocusInWindow();
+        }
+        else if (txtNumTel.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese un teléfono.",2);
+            txtNumTel.requestFocusInWindow();
+        }
+        else if ( !(rbtM.isSelected() || rbtF.isSelected() || rbtI.isSelected()) ) {
+            Helper.mensaje(this, "Seleccione un sexo, por favor.",2);
+        }
+        else {
+            String cc, nombre, apellido, address, num_tel, sexo="";
+            cc = txtCc.getText();
+            nombre = txtNombre.getText();
+            apellido = txtApellido.getText();
+            address = txtAddress.getText();
+            num_tel = txtNumTel.getText();
+            if (rbtM.isSelected()) {
+                sexo = "Masculino";
+            }
+            if(rbtF.isSelected()) {
+                sexo = "Femenino";
+            }
+            if(rbtI.isSelected()) {
+                sexo = "Indefinido";
+            }
+            LinkedList<Trabajador> trabajadoresModificado;
+            try {
+                if (aux == 0) {
+                    Trabajador t = new Trabajador(cc, nombre, apellido, address, num_tel, sexo);
+                    t.guardar(salida);
+                    Helper.mensaje(this, "Trabajador guardado exitosamente.", 1);
+                }
+                else {
+                    trabajadoresModificado = Helper.modificarTrabajador(ruta, cc, nombre, apellido, address, num_tel, sexo);
+                    salida = new ObjectOutputStream(new FileOutputStream(ruta));
+                    Helper.volcado(salida, trabajadoresModificado);
+                    aux = 0;
+                    Helper.mensaje(this, "Trabajador actualizado correctamente.", 1);
+                }
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
             Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
             txtCc.setText("");
             txtNombre.setText("");
@@ -268,61 +343,6 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             Helper.habilitarBotones(botonesH);
             Helper.deshabilitarBotones(botonesD);
         }
-        
-    }//GEN-LAST:event_cmdEliminarActionPerformed
-
-    private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
-        // TODO add your handling code here:
-        String cc, nombre, apellido, address, num_tel, sexo="";
-        cc = txtCc.getText();
-        nombre = txtNombre.getText();
-        apellido = txtApellido.getText();
-        address = txtAddress.getText();
-        num_tel = txtNumTel.getText();
-        if (rbtM.isSelected()) {
-            sexo = "Masculino";
-        }
-        else if(rbtF.isSelected()) {
-            sexo = "Femenino";
-        }
-        else if(rbtI.isSelected()) {
-            sexo = "Indefinido";
-        }
-        else {
-            Helper.mensaje(this, "Seleccione un sexo, por favor.",2);
-            btgSexo.setSelected(rbtM.getModel(), true);
-        }
-        /*if (cc.equals(Helper.traerPersonaCedula(cc, ruta).getCc())) {
-                Helper.mensaje(this, "Ya existe con esta cédula.", 3);
-        }*/
-        LinkedList<Trabajador> trabajadoresModificado;
-        try {
-            if (aux == 0) {
-                Trabajador t = new Trabajador(cc, nombre, apellido, address, num_tel, sexo);
-                t.guardar(salida);
-            }
-            else {
-                trabajadoresModificado = Helper.modificarTrabajador(ruta, cc, nombre, apellido, address, num_tel, sexo);
-                salida = new ObjectOutputStream(new FileOutputStream(ruta));
-                Helper.volcado(salida, trabajadoresModificado);
-                aux = 0;
-                Helper.mensaje(this, "Trabajador actualizado correctamente.", 1);
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-        Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
-        txtCc.setText("");
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtAddress.setText("");
-        txtNumTel.setText("");
-        btgSexo.clearSelection();
-        txtCc.requestFocusInWindow();
-        JButton botonesH[]={cmdBuscar,cmdCancelar};
-        JButton botonesD[]={cmdEliminar,cmdGuardar};
-        Helper.habilitarBotones(botonesH);
-        Helper.deshabilitarBotones(botonesD);
     }//GEN-LAST:event_cmdGuardarActionPerformed
 
     private void cmdCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCancelarActionPerformed
@@ -334,8 +354,9 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         txtNumTel.setText("");
         btgSexo.clearSelection();
         txtCc.requestFocusInWindow();
-        JButton botonesH[]={cmdBuscar,cmdCancelar};
-        JButton botonesD[]={cmdEliminar,cmdGuardar};
+        
+        JButton botonesH[]={cmdBuscar};
+        JButton botonesD[]={cmdGuardar, cmdEliminar, cmdCancelar};
         Helper.habilitarBotones(botonesH);
         Helper.deshabilitarBotones(botonesD);
     }//GEN-LAST:event_cmdCancelarActionPerformed
@@ -352,14 +373,16 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         txtApellido.setText(t.getApellido());
         txtAddress.setText(t.getAddress());
         txtNumTel.setText(t.getNum_tel());
-        if (t.getSexo().equals("Masculino")) {
-            btgSexo.setSelected(rbtM.getModel(), true);
-        }
-        else if (t.getSexo().equals("Femenino")) {
-            btgSexo.setSelected(rbtF.getModel(), true);
-        }
-        else {
-            btgSexo.setSelected(rbtI.getModel(), true);
+        switch (t.getSexo()) {
+            case "Masculino":
+                btgSexo.setSelected(rbtM.getModel(), true);
+                break;
+            case "Femenino":
+                btgSexo.setSelected(rbtF.getModel(), true);
+                break;
+            case "Indefinido":
+                btgSexo.setSelected(rbtI.getModel(), true);
+                break;
         }
         aux = 1;
         JButton botonesH[]={cmdEliminar,cmdGuardar,cmdCancelar};
@@ -372,71 +395,65 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (txtCc.getText().isEmpty()) {
             Helper.mensaje(this, "Ingrese una cédula.", 3);
-        }
-        String cc;
-        cc = txtCc.getText();
-        Trabajador t;
-        if (Helper.buscarTrabajadorCedula(cc, ruta)) {
-            t = Helper.traerTrabajadorCedula(cc, ruta);
-            txtNombre.setText(t.getNombre());
-            txtApellido.setText(t.getApellido());
-            txtAddress.setText(t.getAddress());
-            txtNumTel.setText(t.getNum_tel());
-            if (t.getSexo().equals("Masculino")) {
-                rbtM.setSelected(true);
-            }
-            else if (t.getSexo().equals("Femenino")) {
-                rbtF.setSelected(true);
-            }
-            else {
-                rbtI.setSelected(true);
-            }   
-            aux = 1;
+            txtCc.requestFocusInWindow();
         }
         else {
-            txtNombre.requestFocusInWindow();
-            aux = 0;
+            String cc;
+            cc = txtCc.getText();
+            Trabajador t;
+            if (Helper.buscarTrabajadorCedula(cc, ruta)) {
+                Helper.mensaje(this, "Se encontró un trabajador con la cédula ingresada.", 1);
+                t = Helper.traerTrabajadorCedula(cc, ruta);
+                txtNombre.setText(t.getNombre());
+                txtApellido.setText(t.getApellido());
+                txtAddress.setText(t.getAddress());
+                txtNumTel.setText(t.getNum_tel());
+                switch (t.getSexo()) {
+                    case "Masculino":
+                        rbtM.setSelected(true);
+                        break;
+                    case "Femenino":
+                        rbtF.setSelected(true);
+                        break;
+                    case "Indefinido":
+                        rbtI.setSelected(true);
+                        break;
+                } 
+                aux = 1;
+            }
+            else {
+                txtNombre.requestFocusInWindow();
+                aux = 0;
+            }
+            JButton botonesH[]={cmdGuardar,cmdCancelar};
+            JButton botonesD[]={cmdBuscar, cmdEliminar};
+            Helper.habilitarBotones(botonesH);
+            Helper.deshabilitarBotones(botonesD);
         }
-        JButton botonesH[]={cmdGuardar,cmdCancelar, cmdEliminar};
-        JButton botonesD[]={cmdBuscar};
-        Helper.habilitarBotones(botonesH);
-        Helper.deshabilitarBotones(botonesD);
     }//GEN-LAST:event_cmdBuscarActionPerformed
 
     private void txtCcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCcKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloNums(c, evt);
     }//GEN-LAST:event_txtCcKeyTyped
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloLetras(c, evt); 
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloLetras(c, evt);
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void txtNumTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumTelKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloNums(c, evt);
     }//GEN-LAST:event_txtNumTelKeyTyped
 
     /**

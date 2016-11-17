@@ -32,8 +32,6 @@ public class AgregarCliente extends javax.swing.JDialog {
     public AgregarCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        JButton botonesH[]={cmdBuscar, cmdGuardar, cmdCancelar};
-        JButton botonesD[]={cmdEliminar};
         rutaC = "src/datos/clientes.txt";
         rutaT = "src/datos/trabajadores.txt";
         Helper.llenarComboTrabajadores(cmbEncargado, rutaT);
@@ -45,6 +43,11 @@ public class AgregarCliente extends javax.swing.JDialog {
         }
         Helper.volcado(salida, clientes);
         Helper.llenarTablaClientes(tblClientes, rutaC);
+        
+        JButton botonesH[]={cmdBuscar};
+        JButton botonesD[]={cmdGuardar, cmdEliminar, cmdCancelar};
+        Helper.habilitarBotones(botonesH);
+        Helper.deshabilitarBotones(botonesD);
     }
 
     /**
@@ -88,6 +91,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AGREGAR CLIENTES");
@@ -184,15 +188,15 @@ public class AgregarCliente extends javax.swing.JDialog {
 
         btgSexo.add(rbtM);
         rbtM.setText("M");
-        jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, -1, -1));
+        jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
         btgSexo.add(rbtF);
         rbtF.setText("F");
-        jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 4, -1, -1));
+        jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 5, -1, -1));
 
         btgSexo.add(rbtI);
         rbtI.setText("I");
-        jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 4, -1, -1));
+        jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 5, -1, -1));
 
         jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 197, 160, 30));
 
@@ -269,6 +273,7 @@ public class AgregarCliente extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tblClientes);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 760, 250));
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 40, 30));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 275, 780, 280));
 
@@ -302,6 +307,7 @@ public class AgregarCliente extends javax.swing.JDialog {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
+            Helper.mensaje(this, "Cliente eliminado exitosamente.", 1);
             Helper.volcado(salida, clientes);
             Helper.llenarTablaClientes(tblClientes, rutaC);
             txtCc.setText("");
@@ -314,6 +320,7 @@ public class AgregarCliente extends javax.swing.JDialog {
             cmbEncargado.setSelectedIndex(0);
             btgSexo.clearSelection();
             txtCc.requestFocusInWindow();
+            
             JButton botonesH[]={cmdBuscar,cmdCancelar};
             JButton botonesD[]={cmdEliminar,cmdGuardar};
             Helper.habilitarBotones(botonesH);
@@ -324,67 +331,90 @@ public class AgregarCliente extends javax.swing.JDialog {
 
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
         // TODO add your handling code here:
-        String deuda, cc, nombre, apellido, address, num_tel, num_tel_fiador, sexo="", auxEncargado, ccEncargado;
-        Trabajador encargado;
-        int indice;
-        deuda = txtDeuda.getText();
-        cc = txtCc.getText();
-        nombre = txtNombre.getText();
-        apellido = txtApellido.getText();
-        address = txtAddress.getText();
-        num_tel = txtNumTel.getText();
-        num_tel_fiador = txtNumTelFiador.getText();
-        if (rbtM.isSelected()) {
-            sexo = "Masculino";
+        if (txtNombre.getText().isEmpty()){
+            Helper.mensaje(this, "Ingrese un nombre.",2);
+            txtNombre.requestFocusInWindow();
         }
-        else if(rbtF.isSelected()) {
-            sexo = "Femenino";
+        else if (txtApellido.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese un apellido.",2);
+            txtApellido.requestFocusInWindow();
         }
-        else if(rbtI.isSelected()) {
-            sexo = "Indefinido";
+        else if (txtAddress.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese una dirección.",2);
+            txtAddress.requestFocusInWindow();
+        }
+        else if (txtNumTel.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese un teléfono.",2);
+            txtNumTel.requestFocusInWindow();
+        }
+        else if (txtNumTelFiador.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese un teléfono de un fiador.",2);
+            txtNumTelFiador.requestFocusInWindow();
+        }
+        else if ( !(rbtM.isSelected() || rbtF.isSelected() || rbtI.isSelected()) ) {
+            Helper.mensaje(this, "Seleccione un sexo, por favor.",2);
+        }
+        else if (txtDeuda.getText().isEmpty()) {
+            Helper.mensaje(this, "Ingrese un valor para la deuda.",2);
+            txtDeuda.requestFocusInWindow();
         }
         else {
-            Helper.mensaje(this, "Seleccione un sexo, por favor.",2);
-            btgSexo.setSelected(rbtM.getModel(), true);
-        }
-        auxEncargado = cmbEncargado.getSelectedItem().toString();
-        indice = auxEncargado.indexOf("-") - 1;
-        ccEncargado = auxEncargado.substring(0, indice);
-        LinkedList<Cliente> clientesModificado;
-        encargado = Helper.traerTrabajadorCedula(ccEncargado, rutaT);
-        /*if (cc.equals(Helper.traerPersonaCedula(cc, ruta).getCc())) {
-                Helper.mensaje(this, "Ya existe con esta cédula.", 3);
-        }*/
-        try {
-            if (aux == 0) {
-                Cliente c = new Cliente(deuda, num_tel_fiador, encargado, cc, nombre, apellido, address, num_tel, sexo);
-                c.guardar(salida);
+            String deuda, cc, nombre, apellido, address, num_tel, num_tel_fiador, sexo="", auxEncargado, ccEncargado;
+            Trabajador encargado;
+            int indice;
+            deuda = txtDeuda.getText();
+            cc = txtCc.getText();
+            nombre = txtNombre.getText();
+            apellido = txtApellido.getText();
+            address = txtAddress.getText();
+            num_tel = txtNumTel.getText();
+            num_tel_fiador = txtNumTelFiador.getText();
+            if (rbtM.isSelected()) {
+                sexo = "Masculino";
             }
-            else {
-                clientesModificado = Helper.modificarCliente(rutaC, deuda, num_tel_fiador, encargado, cc, nombre, apellido, address, num_tel, sexo);
-                salida = new ObjectOutputStream(new FileOutputStream(rutaC));
-                Helper.volcado(salida, clientesModificado);
-                aux = 0;
-                Helper.mensaje(this, "Cliente actualizado correctamente.", 1);
+            if(rbtF.isSelected()) {
+                sexo = "Femenino";
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            if(rbtI.isSelected()) {
+                sexo = "Indefinido";
+            }
+            auxEncargado = cmbEncargado.getSelectedItem().toString();
+            indice = auxEncargado.indexOf("-") - 1;
+            ccEncargado = auxEncargado.substring(0, indice);
+            LinkedList<Cliente> clientesModificado;
+            encargado = Helper.traerTrabajadorCedula(ccEncargado, rutaT);
+            try {
+                if (aux == 0) {
+                    Cliente c = new Cliente(deuda, num_tel_fiador, encargado, cc, nombre, apellido, address, num_tel, sexo);
+                    c.guardar(salida);
+                    Helper.mensaje(this, "Cliente guardado exitosamente.", 1);
+                }
+                else {
+                    clientesModificado = Helper.modificarCliente(rutaC, deuda, num_tel_fiador, encargado, cc, nombre, apellido, address, num_tel, sexo);
+                    salida = new ObjectOutputStream(new FileOutputStream(rutaC));
+                    Helper.volcado(salida, clientesModificado);
+                    aux = 0;
+                    Helper.mensaje(this, "Cliente actualizado exitosamente.", 1);
+                }
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            Helper.llenarTablaClientes(tblClientes, rutaC);
+            txtCc.setText("");
+            txtNombre.setText("");
+            txtApellido.setText("");
+            txtAddress.setText("");
+            txtNumTel.setText("");
+            txtNumTelFiador.setText("");
+            txtDeuda.setText("");
+            cmbEncargado.setSelectedIndex(0);
+            btgSexo.clearSelection();
+            txtCc.requestFocusInWindow();
+            JButton botonesH[]={cmdBuscar};
+            JButton botonesD[]={cmdEliminar, cmdCancelar, cmdGuardar};
+            Helper.habilitarBotones(botonesH);
+            Helper.deshabilitarBotones(botonesD);
         }
-        Helper.llenarTablaClientes(tblClientes, rutaC);
-        txtCc.setText("");
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtAddress.setText("");
-        txtNumTel.setText("");
-        txtNumTelFiador.setText("");
-        txtDeuda.setText("");
-        cmbEncargado.setSelectedIndex(0);
-        btgSexo.clearSelection();
-        txtCc.requestFocusInWindow();
-        JButton botonesH[]={cmdBuscar,cmdCancelar};
-        JButton botonesD[]={cmdEliminar,cmdGuardar};
-        Helper.habilitarBotones(botonesH);
-        Helper.deshabilitarBotones(botonesD);
     }//GEN-LAST:event_cmdGuardarActionPerformed
 
     private void cmdCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCancelarActionPerformed
@@ -399,8 +429,9 @@ public class AgregarCliente extends javax.swing.JDialog {
         cmbEncargado.setSelectedIndex(0);
         btgSexo.clearSelection();
         txtCc.requestFocusInWindow();
-        JButton botonesH[]={cmdBuscar,cmdCancelar};
-        JButton botonesD[]={cmdEliminar,cmdGuardar};
+        
+        JButton botonesH[]={cmdBuscar};
+        JButton botonesD[]={cmdGuardar, cmdEliminar, cmdCancelar};
         Helper.habilitarBotones(botonesH);
         Helper.deshabilitarBotones(botonesD);
     }//GEN-LAST:event_cmdCancelarActionPerformed
@@ -424,15 +455,17 @@ public class AgregarCliente extends javax.swing.JDialog {
         encargado = c.getEncargado();
         auxEncargado = encargado.getCc() + " - " + encargado.getNombre() + " " + encargado.getApellido();
         cmbEncargado.setSelectedItem(auxEncargado);
-        if (c.getSexo().equals("Masculino")) {
-            btgSexo.setSelected(rbtM.getModel(), true);
+        switch (c.getSexo()) {
+            case "Masculino":
+                btgSexo.setSelected(rbtM.getModel(), true);
+                break;
+            case "Femenino":
+                btgSexo.setSelected(rbtF.getModel(), true);
+                break;
+            case "Indefinido":
+                btgSexo.setSelected(rbtI.getModel(), true);
+                break;
         }
-        else if (c.getSexo().equals("Femenino")) {
-            btgSexo.setSelected(rbtF.getModel(), true);
-        }
-        else {
-            btgSexo.setSelected(rbtI.getModel(), true);
-        } 
         aux = 1;
         JButton botonesH[]={cmdEliminar,cmdGuardar,cmdCancelar};
         JButton botonesD[]={cmdBuscar};
@@ -444,94 +477,83 @@ public class AgregarCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
         if (txtCc.getText().isEmpty()) {
             Helper.mensaje(this, "Ingrese una cédula.", 3);
-        }
-        String cc, auxEncargado;
-        Trabajador encargado;
-        cc = txtCc.getText();
-        Cliente c;
-        if (Helper.buscarClienteCedula(cc, rutaC)) {
-            c = Helper.traerClienteCedula(cc, rutaC);
-            txtNombre.setText(c.getNombre());
-            txtApellido.setText(c.getApellido());
-            txtAddress.setText(c.getAddress());
-            txtNumTel.setText(c.getNum_tel());
-            txtNumTelFiador.setText(c.getNum_tel_fiador());
-            encargado = c.getEncargado();
-            auxEncargado = encargado.getCc() + " - " + encargado.getNombre() + " " + encargado.getApellido();
-            cmbEncargado.setSelectedItem(auxEncargado);
-            if (c.getSexo().equals("Masculino")) {
-                rbtM.setSelected(true);
-            }
-            else if (c.getSexo().equals("Femenino")) {
-                rbtF.setSelected(true);
-            }
-            else {
-                rbtI.setSelected(true);
-            }   
-            aux = 1;
+            txtCc.requestFocusInWindow();
         }
         else {
-            txtNombre.requestFocusInWindow();
-            aux = 0;
+            String cc, auxEncargado;
+            Trabajador encargado;
+            cc = txtCc.getText();
+            Cliente c;
+            if (Helper.buscarClienteCedula(cc, rutaC)) {
+                Helper.mensaje(this, "Se encontró un cliente con la cédula ingresada.", 1);
+                c = Helper.traerClienteCedula(cc, rutaC);
+                txtNombre.setText(c.getNombre());
+                txtApellido.setText(c.getApellido());
+                txtAddress.setText(c.getAddress());
+                txtNumTel.setText(c.getNum_tel());
+                txtNumTelFiador.setText(c.getNum_tel_fiador());
+                txtDeuda.setText(c.getDeuda());
+                encargado = c.getEncargado();
+                auxEncargado = encargado.getCc() + " - " + encargado.getNombre() + " " + encargado.getApellido();
+                cmbEncargado.setSelectedItem(auxEncargado);
+                switch (c.getSexo()) {
+                    case "Masculino":
+                        rbtM.setSelected(true);
+                        break;
+                    case "Femenino":
+                        rbtF.setSelected(true);
+                        break;
+                    case "Indefinido":
+                        rbtI.setSelected(true);
+                        break;
+                }
+                aux = 1;
+            }
+            else {
+                txtNombre.requestFocusInWindow();
+                aux = 0;
+            }
+            JButton botonesH[]={cmdGuardar,cmdCancelar};
+            JButton botonesD[]={cmdBuscar, cmdEliminar};
+            Helper.habilitarBotones(botonesH);
+            Helper.deshabilitarBotones(botonesD);
         }
-        JButton botonesH[]={cmdGuardar,cmdCancelar, cmdEliminar};
-        JButton botonesD[]={cmdBuscar};
-        Helper.habilitarBotones(botonesH);
-        Helper.deshabilitarBotones(botonesD);
     }//GEN-LAST:event_cmdBuscarActionPerformed
 
     private void txtCcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCcKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloNums(c, evt);
     }//GEN-LAST:event_txtCcKeyTyped
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloLetras(c, evt);
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloLetras(c, evt);
     }//GEN-LAST:event_txtApellidoKeyTyped
 
     private void txtNumTelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumTelKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloNums(c, evt);
     }//GEN-LAST:event_txtNumTelKeyTyped
 
     private void txtNumTelFiadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumTelFiadorKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        } 
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloNums(c, evt);
     }//GEN-LAST:event_txtNumTelFiadorKeyTyped
 
     private void txtDeudaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeudaKeyTyped
         // TODO add your handling code here:
-        char c=evt.getKeyChar(); 
-        if(!Character.isDigit(c)) { 
-            getToolkit().beep(); 
-            evt.consume(); 
-        }
+        char c = evt.getKeyChar(); 
+        Helper.ingresarSoloNums(c, evt);
     }//GEN-LAST:event_txtDeudaKeyTyped
 
     /**
@@ -599,6 +621,7 @@ public class AgregarCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rbtF;
     private javax.swing.JRadioButton rbtI;
     private javax.swing.JRadioButton rbtM;

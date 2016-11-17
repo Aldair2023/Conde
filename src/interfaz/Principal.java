@@ -39,15 +39,23 @@ public class Principal extends javax.swing.JFrame {
         lblImagen = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnOpciones = new javax.swing.JMenu();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         mnSalir = new javax.swing.JMenuItem();
         mnTrabajador = new javax.swing.JMenu();
         mnAgregarTrabajador = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnReportes = new javax.swing.JMenu();
+        mnListadoPorSexoTrabjador = new javax.swing.JMenuItem();
         mnListadoCompletoTrabajador = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        mnCantidadTrabajadores = new javax.swing.JMenuItem();
         mnCliente = new javax.swing.JMenu();
         mnAgregarCliente = new javax.swing.JMenuItem();
-        mnReportes = new javax.swing.JMenu();
-        mnListadoPorSexo = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenu1 = new javax.swing.JMenu();
+        mnListadoPorSexoCliente = new javax.swing.JMenuItem();
+        mnListadoCompletoCliente = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        mnCantidadClientes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CONTROL DE DEUDAS");
@@ -58,10 +66,14 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 153, 153));
         jMenuBar1.setForeground(new java.awt.Color(255, 204, 204));
+        jMenuBar1.setAutoscrolls(true);
+        jMenuBar1.setOpaque(false);
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(187, 25));
 
         mnOpciones.setText("Opciones");
-        mnOpciones.add(jSeparator2);
+        mnOpciones.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
+        mnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
         mnSalir.setText("Salir");
         mnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +85,9 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(mnOpciones);
 
         mnTrabajador.setText("Trabajadores");
+        mnTrabajador.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
+        mnAgregarTrabajador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         mnAgregarTrabajador.setText("Agregar");
         mnAgregarTrabajador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +95,18 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnTrabajador.add(mnAgregarTrabajador);
+        mnTrabajador.add(jSeparator1);
+
+        mnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/list.png"))); // NOI18N
+        mnReportes.setText("Reportes");
+
+        mnListadoPorSexoTrabjador.setText("Listado Por Sexo");
+        mnListadoPorSexoTrabjador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoPorSexoTrabjadorActionPerformed(evt);
+            }
+        });
+        mnReportes.add(mnListadoPorSexoTrabjador);
 
         mnListadoCompletoTrabajador.setText("Listado Completo");
         mnListadoCompletoTrabajador.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +114,25 @@ public class Principal extends javax.swing.JFrame {
                 mnListadoCompletoTrabajadorActionPerformed(evt);
             }
         });
-        mnTrabajador.add(mnListadoCompletoTrabajador);
+        mnReportes.add(mnListadoCompletoTrabajador);
+        mnReportes.add(jSeparator3);
+
+        mnCantidadTrabajadores.setText("Cantidad");
+        mnCantidadTrabajadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCantidadTrabajadoresActionPerformed(evt);
+            }
+        });
+        mnReportes.add(mnCantidadTrabajadores);
+
+        mnTrabajador.add(mnReportes);
 
         jMenuBar1.add(mnTrabajador);
 
         mnCliente.setText("Clientes");
+        mnCliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
+        mnAgregarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         mnAgregarCliente.setText("Agregar");
         mnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,20 +140,39 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         mnCliente.add(mnAgregarCliente);
+        mnCliente.add(jSeparator2);
 
-        jMenuBar1.add(mnCliente);
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/list.png"))); // NOI18N
+        jMenu1.setText("Reportes");
 
-        mnReportes.setText("Reportes");
-
-        mnListadoPorSexo.setText("Listado Por Sexo");
-        mnListadoPorSexo.addActionListener(new java.awt.event.ActionListener() {
+        mnListadoPorSexoCliente.setText("Listado Por Sexo");
+        mnListadoPorSexoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnListadoPorSexoActionPerformed(evt);
+                mnListadoPorSexoClienteActionPerformed(evt);
             }
         });
-        mnReportes.add(mnListadoPorSexo);
+        jMenu1.add(mnListadoPorSexoCliente);
 
-        jMenuBar1.add(mnReportes);
+        mnListadoCompletoCliente.setText("Listado Completo");
+        mnListadoCompletoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoCompletoClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnListadoCompletoCliente);
+        jMenu1.add(jSeparator4);
+
+        mnCantidadClientes.setText("Cantidad");
+        mnCantidadClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCantidadClientesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnCantidadClientes);
+
+        mnCliente.add(jMenu1);
+
+        jMenuBar1.add(mnCliente);
 
         setJMenuBar(jMenuBar1);
 
@@ -129,20 +187,15 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(666, 442));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void mnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSalirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_mnSalirActionPerformed
 
     private void mnListadoCompletoTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoCompletoTrabajadorActionPerformed
         // TODO add your handling code here:
@@ -150,11 +203,11 @@ public class Principal extends javax.swing.JFrame {
         lct.setVisible(true);
     }//GEN-LAST:event_mnListadoCompletoTrabajadorActionPerformed
 
-    private void mnListadoPorSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPorSexoActionPerformed
+    private void mnListadoPorSexoTrabjadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPorSexoTrabjadorActionPerformed
         // TODO add your handling code here:
-        ListadoPorSexo lps = new ListadoPorSexo(this,true);
-        lps.setVisible(true);
-    }//GEN-LAST:event_mnListadoPorSexoActionPerformed
+        ListadoPorSexoTrabajador lpst = new ListadoPorSexoTrabajador(this,true);
+        lpst.setVisible(true);
+    }//GEN-LAST:event_mnListadoPorSexoTrabjadorActionPerformed
 
     private void mnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarClienteActionPerformed
         // TODO add your handling code here:
@@ -167,6 +220,35 @@ public class Principal extends javax.swing.JFrame {
         AgregarTrabajador at = new AgregarTrabajador(this, true);
         at.setVisible(true);
     }//GEN-LAST:event_mnAgregarTrabajadorActionPerformed
+
+    private void mnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_mnSalirActionPerformed
+
+    private void mnListadoCompletoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoCompletoClienteActionPerformed
+        // TODO add your handling code here:
+        ListadoCompletoCliente lcc = new ListadoCompletoCliente(this,true);
+        lcc.setVisible(true);
+    }//GEN-LAST:event_mnListadoCompletoClienteActionPerformed
+
+    private void mnListadoPorSexoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPorSexoClienteActionPerformed
+        // TODO add your handling code here:
+        ListadoPorSexoCliente lpsc = new ListadoPorSexoCliente(this,true);
+        lpsc.setVisible(true);
+    }//GEN-LAST:event_mnListadoPorSexoClienteActionPerformed
+
+    private void mnCantidadTrabajadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCantidadTrabajadoresActionPerformed
+        // TODO add your handling code here:
+        CantidadTrabajadores ct = new CantidadTrabajadores(this, true);
+        ct.setVisible(true);
+    }//GEN-LAST:event_mnCantidadTrabajadoresActionPerformed
+
+    private void mnCantidadClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCantidadClientesActionPerformed
+        // TODO add your handling code here:
+        CantidadClientes cc = new CantidadClientes(this, true);
+        cc.setVisible(true);
+    }//GEN-LAST:event_mnCantidadClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,15 +286,23 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JMenuItem mnAgregarCliente;
     private javax.swing.JMenuItem mnAgregarTrabajador;
+    private javax.swing.JMenuItem mnCantidadClientes;
+    private javax.swing.JMenuItem mnCantidadTrabajadores;
     private javax.swing.JMenu mnCliente;
+    private javax.swing.JMenuItem mnListadoCompletoCliente;
     private javax.swing.JMenuItem mnListadoCompletoTrabajador;
-    private javax.swing.JMenuItem mnListadoPorSexo;
+    private javax.swing.JMenuItem mnListadoPorSexoCliente;
+    private javax.swing.JMenuItem mnListadoPorSexoTrabjador;
     private javax.swing.JMenu mnOpciones;
     private javax.swing.JMenu mnReportes;
     private javax.swing.JMenuItem mnSalir;
