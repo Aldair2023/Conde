@@ -214,6 +214,9 @@
               <SubComponents>
                 <Component class="javax.swing.JRadioButton" name="rbtM">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="btgSexo"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="M"/>
                   </Properties>
                   <Constraints>
@@ -224,6 +227,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rbtF">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="btgSexo"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="F"/>
                   </Properties>
                   <Constraints>
@@ -234,6 +240,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rbtI">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="btgSexo"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="I"/>
                   </Properties>
                   <Constraints>

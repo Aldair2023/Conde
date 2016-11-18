@@ -479,6 +479,11 @@ public class AgregarCliente extends javax.swing.JDialog {
             Helper.mensaje(this, "Ingrese una cédula.", 3);
             txtCc.requestFocusInWindow();
         }
+        else if (Integer.parseInt(txtCc.getText()) < 1000) {
+            Helper.mensaje(this, "Ingrese 4 dígitos como mínimo", 2);
+            txtCc.selectAll();
+            txtCc.requestFocusInWindow();
+        }
         else {
             String cc, auxEncargado;
             Trabajador encargado;
@@ -510,6 +515,7 @@ public class AgregarCliente extends javax.swing.JDialog {
                 aux = 1;
             }
             else {
+                Helper.mensaje(this, "No hay trabajadores con la cédula ingresada. Puede continuar", 1);
                 txtNombre.requestFocusInWindow();
                 aux = 0;
             }

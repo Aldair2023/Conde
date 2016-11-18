@@ -354,6 +354,16 @@ public class Helper {
         return null;
     }
     
+    public static String traerClienteEncargado(String nombre_encargado, String ruta){
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getEncargado().getNombre().equals(nombre_encargado)) {
+                return clientes.get(i).getEncargado().getNombre();
+            }
+        }
+        return null;
+    }
+    
     public static LinkedList<Trabajador> modificarTrabajador(String ruta, String cc, String nombre, String apellido, String address, String num_tel, String sexo){
         LinkedList<Trabajador> trabajadores = traerDatos(ruta);
         for (int i = 0; i < trabajadores.size(); i++) {
@@ -398,6 +408,28 @@ public class Helper {
         }
     }
     
+    public static void llenarComboTrabajadoresName(JComboBox combo, String ruta){
+        LinkedList<Trabajador> trabajadores = traerDatos(ruta);
+        DefaultComboBoxModel dcbm =(DefaultComboBoxModel) combo.getModel();
+        dcbm.removeAllElements();
+        Trabajador t;
+        for (int i = 0; i < trabajadores.size(); i++) {
+            t = trabajadores.get(i);
+            dcbm.addElement(t.getNombre());
+        }
+    }
+    
+    public static String clientesPorEncargado(String ruta, String encargado) {
+        LinkedList<Cliente> clientes = traerDatos(ruta);
+        LinkedList<Cliente> clientesFiltrados = new LinkedList();
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getEncargado().getNombre().equals(encargado)) {
+                clientesFiltrados.add(clientes.get(i));
+            }
+        }
+        return encargado+" tiene " +clientesFiltrados.size() + " cliente(s).";
+    }
+    
     public static void ingresarSoloLetras(char c, KeyEvent evt){
         if(!Character.isLetter(c)) { 
             evt.consume(); 
@@ -410,9 +442,4 @@ public class Helper {
         }
     }
     
-    public static void eliminarTrabajador(String rutaC, String rutaT){
-        
-    }
-    
-
 }

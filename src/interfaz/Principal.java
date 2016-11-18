@@ -56,6 +56,7 @@ public class Principal extends javax.swing.JFrame {
         mnListadoCompletoCliente = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         mnCantidadClientes = new javax.swing.JMenuItem();
+        mnListadoPorEncargado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CONTROL DE DEUDAS");
@@ -170,6 +171,14 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(mnCantidadClientes);
 
+        mnListadoPorEncargado.setText("Clientes Por Encargado");
+        mnListadoPorEncargado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoPorEncargadoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnListadoPorEncargado);
+
         mnCliente.add(jMenu1);
 
         jMenuBar1.add(mnCliente);
@@ -250,6 +259,12 @@ public class Principal extends javax.swing.JFrame {
         cc.setVisible(true);
     }//GEN-LAST:event_mnCantidadClientesActionPerformed
 
+    private void mnListadoPorEncargadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPorEncargadoActionPerformed
+        // TODO add your handling code here:
+        ClientesPorEncargado cpe = new ClientesPorEncargado(this, true);
+        cpe.setVisible(true);
+    }//GEN-LAST:event_mnListadoPorEncargadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +316,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu mnCliente;
     private javax.swing.JMenuItem mnListadoCompletoCliente;
     private javax.swing.JMenuItem mnListadoCompletoTrabajador;
+    private javax.swing.JMenuItem mnListadoPorEncargado;
     private javax.swing.JMenuItem mnListadoPorSexoCliente;
     private javax.swing.JMenuItem mnListadoPorSexoTrabjador;
     private javax.swing.JMenu mnOpciones;

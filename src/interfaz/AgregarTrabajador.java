@@ -24,22 +24,23 @@ public class AgregarTrabajador extends javax.swing.JDialog {
     /**
      * Creates new form Agregar
      */
-    String ruta;
+    String rutaT, rutaC;
     ObjectOutputStream salida;
     LinkedList<Trabajador> trabajadores;
     int aux = 0;
     public AgregarTrabajador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ruta = "src/datos/trabajadores.txt";
+        rutaT = "src/datos/trabajadores.txt";
+        rutaC = "src/datos/clientes.txt";
         try {
-            trabajadores = Helper.traerDatos(ruta);
-            salida = new ObjectOutputStream(new FileOutputStream(ruta));
+            trabajadores = Helper.traerDatos(rutaT);
+            salida = new ObjectOutputStream(new FileOutputStream(rutaT));
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
         Helper.volcado(salida, trabajadores);
-        Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
+        Helper.llenarTablaTrabajadores(tblTrabajadores, rutaT);
         
         JButton botonesH[]={cmdBuscar};
         JButton botonesD[]={cmdGuardar, cmdEliminar, cmdCancelar};
@@ -147,12 +148,15 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btgSexo.add(rbtM);
         rbtM.setText("M");
         jPanel5.add(rbtM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, -1, -1));
 
+        btgSexo.add(rbtF);
         rbtF.setText("F");
         jPanel5.add(rbtF, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 5, -1, -1));
 
+        btgSexo.add(rbtI);
         rbtI.setText("I");
         jPanel5.add(rbtI, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 5, -1, -1));
 
@@ -244,34 +248,41 @@ public class AgregarTrabajador extends javax.swing.JDialog {
 
     private void cmdEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdEliminarActionPerformed
         // TODO add your handling code here:
+        String nombre_encargado, nombre_encargado_cliente;
         int i, op;
-        op = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar a este trabajador?", "ELIMINAR", JOptionPane.YES_NO_OPTION);
-        trabajadores = Helper.traerDatos(ruta);
-        if (op == JOptionPane.YES_OPTION) {
-            i = tblTrabajadores.getSelectedRow();
-            trabajadores.remove(i);
-            try {
-                salida = new ObjectOutputStream(new FileOutputStream(ruta));
-            } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+        trabajadores = Helper.traerDatos(rutaT);
+        i = tblTrabajadores.getSelectedRow();
+        nombre_encargado = trabajadores.get(i).getNombre();
+        nombre_encargado_cliente = Helper.traerClienteEncargado(nombre_encargado, rutaC);
+        if (nombre_encargado.equals(nombre_encargado_cliente)) {
+            Helper.mensaje(this, "No puedes eliminar un trabajador que tiene clientes.", 3);
+        }
+        else {
+            op = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar a este trabajador?", "ELIMINAR", JOptionPane.YES_NO_OPTION);
+            if (op == JOptionPane.YES_OPTION) {
+                trabajadores.remove(i);
+                try {
+                    salida = new ObjectOutputStream(new FileOutputStream(rutaT));
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                Helper.mensaje(this, "Trabajador eliminado exitosamente.", 1);
+                Helper.volcado(salida, trabajadores);
+                Helper.llenarTablaTrabajadores(tblTrabajadores, rutaT);
+                txtCc.setText("");
+                txtNombre.setText("");
+                txtApellido.setText("");
+                txtAddress.setText("");
+                txtNumTel.setText("");
+                btgSexo.clearSelection();
+                txtCc.requestFocusInWindow();
+                JButton botonesH[]={cmdBuscar,cmdCancelar};
+                JButton botonesD[]={cmdEliminar,cmdGuardar};
+                Helper.habilitarBotones(botonesH);
+                Helper.deshabilitarBotones(botonesD);
             }
-            Helper.mensaje(this, "Trabajador eliminado exitosamente.", 1);
-            Helper.volcado(salida, trabajadores);
-            Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
-            txtCc.setText("");
-            txtNombre.setText("");
-            txtApellido.setText("");
-            txtAddress.setText("");
-            txtNumTel.setText("");
-            btgSexo.clearSelection();
-            txtCc.requestFocusInWindow();
-            
-            JButton botonesH[]={cmdBuscar,cmdCancelar};
-            JButton botonesD[]={cmdEliminar,cmdGuardar};
-            Helper.habilitarBotones(botonesH);
-            Helper.deshabilitarBotones(botonesD);
         }
         
     }//GEN-LAST:event_cmdEliminarActionPerformed
@@ -321,8 +332,8 @@ public class AgregarTrabajador extends javax.swing.JDialog {
                     Helper.mensaje(this, "Trabajador guardado exitosamente.", 1);
                 }
                 else {
-                    trabajadoresModificado = Helper.modificarTrabajador(ruta, cc, nombre, apellido, address, num_tel, sexo);
-                    salida = new ObjectOutputStream(new FileOutputStream(ruta));
+                    trabajadoresModificado = Helper.modificarTrabajador(rutaT, cc, nombre, apellido, address, num_tel, sexo);
+                    salida = new ObjectOutputStream(new FileOutputStream(rutaT));
                     Helper.volcado(salida, trabajadoresModificado);
                     aux = 0;
                     Helper.mensaje(this, "Trabajador actualizado correctamente.", 1);
@@ -330,7 +341,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
-            Helper.llenarTablaTrabajadores(tblTrabajadores, ruta);
+            Helper.llenarTablaTrabajadores(tblTrabajadores, rutaT);
             txtCc.setText("");
             txtNombre.setText("");
             txtApellido.setText("");
@@ -365,7 +376,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
         // TODO add your handling code here:
         int i;
         Trabajador t;
-        trabajadores = Helper.traerDatos(ruta);
+        trabajadores = Helper.traerDatos(rutaT);
         i = tblTrabajadores.getSelectedRow();
         t = trabajadores.get(i);
         txtCc.setText(t.getCc());
@@ -397,13 +408,18 @@ public class AgregarTrabajador extends javax.swing.JDialog {
             Helper.mensaje(this, "Ingrese una cédula.", 3);
             txtCc.requestFocusInWindow();
         }
+        else if (Integer.parseInt(txtCc.getText()) < 1000) {
+            Helper.mensaje(this, "Ingrese 4 dígitos como mínimo", 2);
+            txtCc.selectAll();
+            txtCc.requestFocusInWindow();
+        }
         else {
             String cc;
             cc = txtCc.getText();
             Trabajador t;
-            if (Helper.buscarTrabajadorCedula(cc, ruta)) {
+            if (Helper.buscarTrabajadorCedula(cc, rutaT)) {
                 Helper.mensaje(this, "Se encontró un trabajador con la cédula ingresada.", 1);
-                t = Helper.traerTrabajadorCedula(cc, ruta);
+                t = Helper.traerTrabajadorCedula(cc, rutaT);
                 txtNombre.setText(t.getNombre());
                 txtApellido.setText(t.getApellido());
                 txtAddress.setText(t.getAddress());
@@ -422,6 +438,7 @@ public class AgregarTrabajador extends javax.swing.JDialog {
                 aux = 1;
             }
             else {
+                Helper.mensaje(this, "No hay trabajadores con la cédula ingresada. Puede continuar", 1);
                 txtNombre.requestFocusInWindow();
                 aux = 0;
             }

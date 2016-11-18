@@ -42,6 +42,9 @@ public class CantidadClientes extends javax.swing.JDialog {
         chkI = new javax.swing.JCheckBox();
         chkF = new javax.swing.JCheckBox();
         chkM = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        chkTotal = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -58,13 +61,13 @@ public class CantidadClientes extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("TRABAJADORES");
+        setTitle("CLIENTES");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("CANTIDAD DE CLIENTES INGRESADOS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 15, -1, -1));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,7 +78,7 @@ public class CantidadClientes extends javax.swing.JDialog {
                 cmdOkActionPerformed(evt);
             }
         });
-        jPanel2.add(cmdOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 170, 32));
+        jPanel2.add(cmdOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 170, 32));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,26 +98,45 @@ public class CantidadClientes extends javax.swing.JDialog {
         chkM.setOpaque(false);
         jPanel3.add(chkM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 40, 30));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setText("Por sexo:");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 170, 60));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chkTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        chkTotal.setText("Total");
+        chkTotal.setOpaque(false);
+        chkTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTotalActionPerformed(evt);
+            }
+        });
+        jPanel4.add(chkTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 27, 80, 30));
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Sexo:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel3.setText("Total:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 170, 70));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 170, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 320, 160));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 320, 240));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(376, 277));
+        setSize(new java.awt.Dimension(396, 343));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,12 +167,37 @@ public class CantidadClientes extends javax.swing.JDialog {
             cant = Helper.cantidadClientes(rutaC, "Femenino");
             Helper.mensaje(this, cant, 1);
         }
-        else {
+        else if (chkI.isSelected()){
             cant = Helper.cantidadClientes(rutaC, "Indefinido");
             Helper.mensaje(this, cant, 1);
         }
+        else if (chkTotal.isSelected()) {
+            int cont;
+            cont = Helper.traerDatos(rutaC).size();
+            Helper.mensaje(this, "Hay "+cont + " clientes ingresados.", 1);
+        }
+        else {
+            Helper.mensaje(this, "Seleccione una opción, por favor.", 3);
+        }
         
     }//GEN-LAST:event_cmdOkActionPerformed
+
+    private void chkTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTotalActionPerformed
+        // TODO add your handling code here:
+        if (chkTotal.isSelected()) {
+            chkM.setEnabled(false);
+            chkM.setSelected(false);
+            chkF.setEnabled(false);
+            chkF.setSelected(false);
+            chkI.setEnabled(false);
+            chkI.setSelected(false);
+        }
+        else {
+            chkM.setEnabled(true);
+            chkF.setEnabled(true);
+            chkI.setEnabled(true);
+        }
+    }//GEN-LAST:event_chkTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,12 +260,15 @@ public class CantidadClientes extends javax.swing.JDialog {
     private javax.swing.JCheckBox chkF;
     private javax.swing.JCheckBox chkI;
     private javax.swing.JCheckBox chkM;
+    private javax.swing.JCheckBox chkTotal;
     private javax.swing.JButton cmdOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

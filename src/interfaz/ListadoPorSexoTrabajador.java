@@ -92,7 +92,6 @@ public class ListadoPorSexoTrabajador extends javax.swing.JDialog {
         jLabel1.setText("LISTADO POR SEXO DE TRABAJADORES");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
-        cmbSexo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         cmbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-----------", "Masculino", "Femenino", "Indefinido" }));
         cmbSexo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
